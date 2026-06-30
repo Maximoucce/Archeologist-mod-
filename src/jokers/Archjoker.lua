@@ -14,6 +14,8 @@ SMODS.Joker {
     cost = 10,
     blueprint_compat = true,
     discovered = true,
+    eternal_compat = true,
+    perishable_compat = true,
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -28,4 +30,5 @@ SMODS.Joker {
             }
         end
     end
+    
 }
