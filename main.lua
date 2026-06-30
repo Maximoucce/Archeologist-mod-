@@ -1,6 +1,6 @@
 SMODS.Atlas {
-    key = 'ArchHD',
-    path = 'ArchHD.png',
+    key = 'ArchK',
+    path = 'ArchK.png',
     px = 71,
     py = 95
 }
