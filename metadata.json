@@ -1,0 +1,9 @@
+{
+    "id": "MaxArchMod",
+    "name": "Archeologist (upprint mod)",
+    "author": ["Maximoucce"],
+    "description": "a first mod by me",
+    "prefix": "maxarch",
+    "main file": "main.lua",
+    "version": "0.0.1"
+}
