@@ -1,3 +1,4 @@
+local Utils = assert(SMODS.load_file("src/utils.lua"))()
 SMODS.Joker {
     key = 'Archjoker',
     atlas = 'ArchHD',
@@ -16,19 +17,13 @@ SMODS.Joker {
     discovered = true,
     eternal_compat = true,
     perishable_compat = true,
-    loc_vars = function(self, info_queue, card)
-        return {
-            vars = {
-                card.ability.extra.chips
-            }
-        }
-    end,
-    calculate = function(self, card, context)
-        if context.joker_main then
-            return {
-                chips = card.ability.extra.chips
-            }
-        end
-    end
     
+    calculate = function(self, card, context)
+
+    if context.joker_main then
+        local pos = Utils.get_joker_position(card)
+        print("Ma position : "..tostring(pos))
+    end
+
+end
 }
