@@ -8,6 +8,8 @@ function EJ_load_previous_run()
         return {}
     end
     
+    print((love.filesystem.read("ej_previous_run.txt")))
+    
     local contents, size = love.filesystem.read("ej_previous_run.txt")
     local jokers = {}
     if contents then
@@ -52,6 +54,7 @@ function Game:update(dt)
             
             -- 3. On envoie la table récoltée à la fonction de sauvegarde !
             EJ_save_previous_run(current_jokers)
+            print((love.filesystem.read("ej_previous_run.txt")))
             EJ_already_saved = true
         end
     else
