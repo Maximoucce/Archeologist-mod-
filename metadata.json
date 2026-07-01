@@ -2,6 +2,8 @@
     "id": "MaxArchMod",
     "name": "Archeologist",
     "author": ["Maximoucce"],
+    "badge_colour": "a07c46",
+    "badge_text_colour": "c8f8c6",
     "description": "a first mod by me",
     "prefix": "maxarch",
     "main_file": "main.lua",

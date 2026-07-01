@@ -28,6 +28,7 @@ function EJ_save_previous_run(joker_keys)
 
     love.filesystem.write("ej_previous_run.txt", table.concat(joker_keys, ","))
     G.EJ_previous_run_cache = nil -- Réinitialise le cache
+    print(read(ej_previous_run.txt))
 end
 
 local EJ_old_update = Game.update
