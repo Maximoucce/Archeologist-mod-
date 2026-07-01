@@ -28,7 +28,6 @@ function EJ_save_previous_run(joker_keys)
 
     love.filesystem.write("ej_previous_run.txt", table.concat(joker_keys, ","))
     G.EJ_previous_run_cache = nil -- Réinitialise le cache
-    print(read(ej_previous_run.txt))
 end
 
 local EJ_old_update = Game.update
@@ -70,7 +69,7 @@ G.localization.descriptions.Other["arch_incompat"] = {
     }
 }
 
-
+--info générales du joker
 SMODS.Joker {
     key = 'Archjoker',
     atlas = 'ArchK',
@@ -81,10 +80,21 @@ SMODS.Joker {
     rarity = 3,
     cost = 10,
     blueprint_compat = false,
-    discovered = true,
+    unlocked = false,
+    discovered = false,
     eternal_compat = true,
     perishable_compat = true,
 
+    --déblocage du joker (1 partie perdue)
+    locked_loc_vars = function(self, info_queue, card)
+        return { vars = { 1, G.PROFILES[G.SETTINGS.profile].career_stats.c_losses } }
+    end,
+    check_for_unlock = function(self, args) -- equivalent to `unlock_condition = {type = 'c_losses', extra = 1}`
+        if args.type == 'career_stat' and args.statname == 'c_losses' then
+            return G.PROFILES[G.SETTINGS.profile].career_stats[args.statname] >= 1
+        end
+        return false
+    end,
 
     -- Permet d'afficher proprement le tooltip du Joker copié ou l'incompatibilité
     loc_vars = function(self, info_queue, card)
