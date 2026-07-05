@@ -1,13 +1,13 @@
 SMODS.Atlas {
-    key = 'ArchK',
-    path = 'ArchK.png',
+    key = "ArchHDf",
+    path = "ArchHDf.png",
     px = 71,
     py = 95
 }
 
 SMODS.Atlas {
     key = "modicon",
-    path = "Archtaghd.png",
+    path = "ArchTagHDf.png",
     px = 34,
     py = 34
 }

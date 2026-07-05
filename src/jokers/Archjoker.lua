@@ -62,20 +62,10 @@ function Game:update(dt)
     end
 end
 
-
--- On enregistre la description de l'incompatibilité dans le dictionnaire de Balatro
-G.localization.descriptions.Other["arch_incompat"] = {
-    name = "Incompatible",
-    text = {
-        "{C:mult}Archeologist can't{}",
-        "{C:mult}copy itself{}"
-    }
-}
-
 --info générales du joker
 SMODS.Joker {
     key = 'Archjoker',
-    atlas = 'ArchK',
+    atlas = 'ArchHDf',
     pos = {
         x = 0,
         y = 0
