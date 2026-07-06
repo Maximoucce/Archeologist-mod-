@@ -8,9 +8,7 @@ return {
                     "in this position {C:dark_edition,E:1}last run{}",
                     "{s:0.9,C:attention}Archeologist {s:0.9}excluded"
                 },
-                unlock = {
-                "Use {C:attention}1{} {C:tarot,T:c_maxarch_ExcTarot,E:1}Excavation{} card"
-                }
+                unlock = {"Use {C:attention}1{} {C:tarot,T:c_maxarch_ExcTarot,E:1}Excavation{} card"}
             }
         },
         Other = {

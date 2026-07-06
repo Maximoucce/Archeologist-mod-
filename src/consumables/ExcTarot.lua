@@ -48,7 +48,7 @@ SMODS.Consumable {
                 backdrop_col = G.C.GREEN
             })
         else
-            play_sound('sound_MaxArchMod_PharaoCurseLong', 1, 1)
+            play_sound("maxarch_PCLong", 1, 1)
             attention_text({
                 text = {
                     "Pharaoh's curse !",

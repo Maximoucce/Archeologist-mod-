@@ -8,9 +8,7 @@ return {
                     "position pendant la {C:dark_edition,E:1}dernière partie{}",
                     "{s:0.9,C:attention}Archéologue {s:0.9}exclu"
                 },
-                unlock = {
-                    "Utiliser {C:attention}1{} carte {C:tarot,T:c_maxarch_ExcTarot,E:1}Excavation{}"
-                }
+                unlock = {"Utiliser {C:attention}1{} carte {C:tarot,T:c_maxarch_ExcTarot,E:1}Excavation{}"}
             }
         },
         Other = {
