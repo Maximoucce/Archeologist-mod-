@@ -78,14 +78,11 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = true,
 
-    --déblocage du joker (1 partie perdue)
     locked_loc_vars = function(self, info_queue, card)
-        return { vars = { 1, G.PROFILES[G.SETTINGS.profile].career_stats.c_losses } }
+        return { vars = {} }
     end,
-    check_for_unlock = function(self, args) -- equivalent to `unlock_condition = {type = 'c_losses', extra = 1}`
-        if args.type == 'career_stat' and args.statname == 'c_losses' then
-            return G.PROFILES[G.SETTINGS.profile].career_stats[args.statname] >= 1
-        end
+
+    check_for_unlock = function(self, args)
         return false
     end,
 

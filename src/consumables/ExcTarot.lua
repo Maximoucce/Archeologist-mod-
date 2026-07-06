@@ -4,8 +4,6 @@ SMODS.Consumable {
     pos = { x = 0, y = 0 },
     discovered = false,
     set = 'Tarot',
-    weight = 1000,
-    -- FORCE LA CARTE À ÊTRE UTILISABLE DEPUIS LA MAIN
     keep_on_use = false, 
     
     config = {
@@ -15,7 +13,6 @@ SMODS.Consumable {
         }
     },
 
-    -- AJOUT D'UNE CONDITION D'UTILISATION VALIDE
     can_use = function(self, card)
         return true
     end,
@@ -25,7 +22,15 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
-        unlock_card(G.P_CENTERS.j_maxarch_Archjoker) 
+
+        -- DEBLOCAGE OFFICIEL (AVEC ANIMATION)
+        local joker_key = 'j_maxarch_Archjoker' -- Utilise la clé exacte de ton joker
+
+        if G.P_CENTERS[joker_key] and not G.P_CENTERS[joker_key].unlocked then
+            -- On passe l'objet complet de G.P_CENTERS à la fonction native de Balatro.
+            -- C'est elle qui va gérer proprement la sauvegarde ET l'alerte visuelle au menu !
+            unlock_card(G.P_CENTERS[joker_key])
+         end
 
         if SMODS.pseudorandom_probability(card, "Excavation", 1, card.ability.extra.odds) then
             ease_dollars(card.ability.extra.dollars)
