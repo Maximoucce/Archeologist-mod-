@@ -22,6 +22,14 @@ return {
                 }
             }
         },
+        Tarot = {
+            c_xmpl_consumable1 = {
+                name = 'Consumable1',
+                text = {
+                    "Gives {C:money}10${}"
+                }
+            }
+        },
         Mod = {
             MaxArchMod = {
                 name = "Archeologist Mod",
