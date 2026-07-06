@@ -24,8 +24,8 @@ return {
             c_maxarch_ExcTarot = {
                 name = "Excavation",
                 text = {
-                    "{C:green,s:1.1}1 sur 2{} {C:default,s:1.1}de gagner{} {C:money,s:1.1}$50{}",
-                    "{C:green}1 sur 2{} pour la {X:spectral,C:edition,E:1}Malédiction_du_Pharaon{}"
+                    "{C:green,s:1.1}#1# sur #2#{} {C:default,s:1.1}de gagner{} {C:money,s:1.1}$#50#{}",
+                    "sinon déclenche la {X:spectral,C:edition,E:1}Malédiction_du_Pharaon{}"
                 }
             }
         },

@@ -19,22 +19,13 @@ return {
                     "{C:mult}copy itself{}"
                 }
             },
-            exc_Curse = {
-                name = "Curse",
-                text = {
-                    "{f:maxarch_egy-hier}ihufihufrrfifheriefruiefr{}",
-                    "{f:maxarch_egy-hier}ihufihufrrfifheriefruiefr{}",
-                    "{f:maxarch_egy-hier}ihufihufrrfifheriefruiefr{}",
-                    "{f:maxarch_egy-hier}ihufihufrrfifheriefruiefr{}"
-                }
-            }
         },
         Tarot = {
             c_maxarch_ExcTarot = {
                 name = "Excavation",
                 text = {
-                    "{C:green,s:1.1}1 in 2{} {C:default,s:1.1}chance to win{} {C:money,s:1.1}$50{}",
-                    "{C:green}1 in 2{} chance for {X:spectral,C:edition,E:1}Pharaoh's Curse{}"
+                    "{C:green,s:1.1}#1# in #2#{} {C:default,s:1.1}chance to win{} {C:money,s:1.1}$#3#{}",
+                    "else triggers the {X:spectral,C:edition,E:1}Pharaoh's Curse{}"
                 }
             }
         },

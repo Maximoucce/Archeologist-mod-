@@ -16,16 +16,14 @@ SMODS.Consumable {
         }
     },
 
-    can_use = function(self, card)
-        return true
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
+            "maxarch_ExcTarot")
+        return { vars = { numerator, denominator, card.ability.extra.dollars } }
     end,
 
-    loc_vars = function(self, info_queue, card)
-        return {
-            vars = {
-            card.ability.extra.odds, card.ability.extra.dollars
-        }
-    }
+    can_use = function(self, card)
+        return true
     end,
 
     use = function(self, card, area, copier)
@@ -41,22 +39,23 @@ SMODS.Consumable {
 
         if SMODS.pseudorandom_probability(card, "Excavation", 1, card.ability.extra.odds) then
             ease_dollars(card.ability.extra.dollars)
+            play_sound("polychrome1", math.random(0.5, 2), 0,5)
             attention_text({
                 text = "Treasure !",
-                scale = 1.2, 
+                scale = 1.3,
                 hold = 2,
-                backdrop_col = G.C.GREEN
+                major = card,
+                backdrop_col = G.C.GREEN,
+                card:juice_up(0.3, 0.5)
             })
         else
-            play_sound("maxarch_PCLong", 1, 1)
+            play_sound("maxarch_PC", 1, 0.5)
             attention_text({
-                text = {
-                    "Pharaoh's curse !",
-                    {"Curse"}
-                    },
+                text = "Pharaoh's curse !",
                 scale = 1.2, 
                 hold = 5,
-                backdrop_col = G.C.RED
+                backdrop_col = G.C.RED,
+                card:juice_up(0.3, 0.5)
             })
             
             G.E_MANAGER:add_event(Event({

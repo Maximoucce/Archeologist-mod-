@@ -13,8 +13,8 @@ SMODS.Atlas {
 }
 
 SMODS.Sound({
-    key = "PCLong",
-    path = "PCLong.ogg"
+    key = "PC",
+    path = "PC.ogg"
 })
 
 SMODS.Atlas {

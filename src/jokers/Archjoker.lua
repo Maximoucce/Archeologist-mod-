@@ -92,7 +92,6 @@ SMODS.Joker {
         return { vars = {} }
     end,
 
-
     check_for_unlock = function(self, args)
         return false
     end,
