@@ -7,7 +7,7 @@ SMODS.Atlas {
 
 SMODS.Atlas {
     key = "ExcImage",
-    path = "Exc1HD.png",
+    path = "ExcHD.png",
     px = 71,
     py = 95
 }

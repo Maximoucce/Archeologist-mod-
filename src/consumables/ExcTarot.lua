@@ -1,7 +1,10 @@
 SMODS.Consumable {
     key = "ExcTarot",
     atlas = "ExcImage",
-    pos = { x = 0, y = 0 },
+    pos = {
+        x = 0,
+        y = 0
+    },
     discovered = false,
     set = 'Tarot',
     keep_on_use = false, 
@@ -18,7 +21,11 @@ SMODS.Consumable {
     end,
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.odds, card.ability.extra.dollars } }
+        return {
+            vars = {
+            card.ability.extra.odds, card.ability.extra.dollars
+        }
+    }
     end,
 
     use = function(self, card, area, copier)

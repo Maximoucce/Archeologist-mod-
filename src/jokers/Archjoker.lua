@@ -79,6 +79,12 @@ SMODS.Joker {
     perishable_compat = true,
 
     locked_loc_vars = function(self, info_queue, card)
+        -- On injecte directement le Tarot personnalisé dans la file d'affichage (info_queue)
+        -- G.P_CENTERS['c_maxarch_ExcTarot'] contient toutes les données de ton Tarot
+        if G.P_CENTERS and G.P_CENTERS.c_maxarch_ExcTarot then
+            info_queue[#info_queue + 1] = G.P_CENTERS.c_maxarch_ExcTarot
+        end
+    
         return { vars = {} }
     end,
 

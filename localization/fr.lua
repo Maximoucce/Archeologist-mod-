@@ -6,10 +6,10 @@ return {
                 text = {
                     "Copie l'effet du {C:attention}Joker{} à cette",
                     "position pendant la {C:dark_edition,E:1}dernière partie{}",
-                    "{s:0.8,C:attention}Archéologue {s:0.8}exclu"
+                    "{s:0.9,C:attention}Archéologue {s:0.9}exclu"
                 },
                 unlock = {
-                    "Perdre {C:attention}1{} partie"
+                    "Utiliser {C:attention}1{} carte {C:tarot,T:c_maxarch_ExcTarot,E:1}Excavation{}"
                 }
             }
         },
@@ -19,6 +19,15 @@ return {
                 text = {
                     "{C:mult}L'Archéologue ne peut pas{}",
                     "{C:mult}se copier lui-même{}"
+                }
+            }
+        },
+        Tarot = {
+            c_maxarch_ExcTarot = {
+                name = "Excavation",
+                text = {
+                    "{C:green,s:1.1}1 sur 2{} {C:default,s:1.1}de gagner{} {C:money,s:1.1}$50{}",
+                    "{C:green}1 sur 2{} pour la {X:spectral,C:edition,E:1}Malédiction_du_Pharaon{}"
                 }
             }
         },

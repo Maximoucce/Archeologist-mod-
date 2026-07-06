@@ -6,10 +6,10 @@ return {
                 text = {
                     "Copies ability of {C:attention}Joker{}",
                     "in this position {C:dark_edition,E:1}last run{}",
-                    "{s:0.8,C:attention}Archeologist {s:0.8}excluded"
+                    "{s:0.9,C:attention}Archeologist {s:0.9}excluded"
                 },
                 unlock = {
-                    "Lose {C:attention}1{} run"
+                    "Use {C:attention}1{} {C:tarot,T:c_maxarch_ExcTarot,E:1}Excavation{} card"
                 }
             }
         },
@@ -23,10 +23,11 @@ return {
             }
         },
         Tarot = {
-            c_xmpl_consumable1 = {
-                name = 'Consumable1',
+            c_maxarch_ExcTarot = {
+                name = "Excavation",
                 text = {
-                    "Gives {C:money}10${}"
+                    "{C:green,s:1.1}1 in 2{} {C:default,s:1.1}chance to win{} {C:money,s:1.1}$50{}",
+                    "{C:green}1 in 2{} chance for {X:spectral,C:edition,E:1}Pharaoh's Curse{}"
                 }
             }
         },
