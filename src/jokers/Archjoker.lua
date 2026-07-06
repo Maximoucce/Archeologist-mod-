@@ -79,14 +79,21 @@ SMODS.Joker {
     perishable_compat = true,
 
     locked_loc_vars = function(self, info_queue, card)
-        -- On injecte directement le Tarot personnalisé dans la file d'affichage (info_queue)
-        -- G.P_CENTERS['c_maxarch_ExcTarot'] contient toutes les données de ton Tarot
-        if G.P_CENTERS and G.P_CENTERS.c_maxarch_ExcTarot then
-            info_queue[#info_queue + 1] = G.P_CENTERS.c_maxarch_ExcTarot
+        -- Sécurité absolue pour le "Continue" et les Seeds :
+        -- On vérifie que G.P_CENTERS existe ET que le jeu n'est pas en plein écran de chargement/menu principal
+        if G.P_CENTERS and G.P_CENTERS.c_maxarch_ExcTarot and G.STAGE ~= G.STAGES.MAIN_MENU then
+            -- On utilise une table propre plutôt que l'objet direct, 
+            -- car c'est beaucoup plus stable lors des rechargements de fichiers de sauvegarde.
+            info_queue[#info_queue + 1] = { 
+                key = 'c_maxarch_ExcTarot', 
+                set = 'Tarot' 
+            }
         end
-    
-        return { vars = {} }
+
+        -- On renvoie toujours une variable par défaut pour gmatch
+        return { vars = { 1 } }
     end,
+
 
     check_for_unlock = function(self, args)
         return false

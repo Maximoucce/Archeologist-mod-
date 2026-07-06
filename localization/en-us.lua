@@ -9,7 +9,7 @@ return {
                     "{s:0.9,C:attention}Archeologist {s:0.9}excluded"
                 },
                 unlock = {
-                    "Use {C:attention}1{} {C:tarot,T:c_maxarch_ExcTarot,E:1}Excavation{} card"
+                "Use {C:attention}1{} {C:tarot,T:c_maxarch_ExcTarot,E:1}Excavation{} card"
                 }
             }
         },
@@ -19,6 +19,15 @@ return {
                 text = {
                     "{C:mult}Archeologist can't{}",
                     "{C:mult}copy itself{}"
+                }
+            },
+            exc_Curse = {
+                name = "Curse",
+                text = {
+                    "{f:maxarch_egy-hier}ihufihufrrfifheriefruiefr{}",
+                    "{f:maxarch_egy-hier}ihufihufrrfifheriefruiefr{}",
+                    "{f:maxarch_egy-hier}ihufihufrrfifheriefruiefr{}",
+                    "{f:maxarch_egy-hier}ihufihufrrfifheriefruiefr{}"
                 }
             }
         },

@@ -13,8 +13,8 @@ SMODS.Atlas {
 }
 
 SMODS.Sound({
-    key = "PharaoCurse",
-    path = "PharaoCurse.ogg"
+    key = "PharaoCurseLong",
+    path = "PharaoCurseLong.ogg"
 })
 
 SMODS.Atlas {
@@ -22,6 +22,16 @@ SMODS.Atlas {
     path = "ArchTagHDf.png",
     px = 34,
     py = 34
+}
+
+SMODS.Font{
+    key = "egy-hier",
+    path = "ancient-egyptian-hieroglyphs.ttf",
+    render_scale = 500,
+    TEXT_HEIGHT_SCALE = 0.83,
+    TEXT_OFFSET = {x=0,y=0},
+    FONTSCALE = 0.1,
+    DESCSCALE = 1
 }
 
 local consumables_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/consumables")
