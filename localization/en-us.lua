@@ -19,7 +19,7 @@ return {
                     "{C:mult}copy itself{}"
                 }
             },
-            maxarch_ScarabSeal = {
+            maxarch_scarabs_seal = {
                 name = "Scarab Seal",
                 text = {
                     "Effect varies with position :",

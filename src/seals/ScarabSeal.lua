@@ -1,5 +1,5 @@
 SMODS.Seal {
-    key = "ScarabSeal_seal",
+    key = "ScarabS",
     atlas = "ScarImg",
     pos = {
         x = 0,
