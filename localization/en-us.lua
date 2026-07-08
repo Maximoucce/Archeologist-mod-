@@ -18,7 +18,37 @@ return {
                     "{C:mult}Archeologist can't{}",
                     "{C:mult}copy itself{}"
                 }
-            }
+            },
+            maxarch_ScarabSeal = {
+                name = "Scarab Seal",
+                text = {
+                    "Effect varies with position :",
+                    "{X:mult,C:white} Current effect : {C:attention}#4#",
+                    "{C:inactive}-----------------------------{}",
+                    "1.{C:mult}+#1#{} mult if {C:attention}first{} card to score",
+                    "2.{C:dollars}+#2#${} if card scores in the {C:attention}middle{}",
+                    "3.{C:chips}+#3#{} chips if {C:attention}last{} card to score"
+
+                }
+            },
+            dawn = {
+                name = "dawn",
+                text = {
+                    ""
+                }
+            },
+            zenith = {
+                name = "zenith",
+                text = {
+                    ""
+                }
+            },
+            dusk = {
+                name = "dusk",
+                text = {
+                    ""
+                }
+            },
         },
         Tarot = {
             c_maxarch_ExcTarot = {

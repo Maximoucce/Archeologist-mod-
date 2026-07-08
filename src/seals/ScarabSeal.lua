@@ -1,27 +1,11 @@
 SMODS.Seal {
-    key = "ScarabSeal",
+    key = "ScarabSeal_seal",
     atlas = "ScarImg",
     pos = {
         x = 0,
         y = 0
     },
     badge_colour = HEX("0219AB"),
-    loc_txt = {
-        ["en-us"] = {
-            label = "Scarab Seal",
-            name = "Scarab Seal",
-            text = {
-                "example text {C:mult}yesyes{}"
-            }
-        },
-        ["fr"] = {
-            label = "Sceau Scarabée",
-            name = "Sceau Scarabée",
-            text = {
-                "texte d'exemple {C:mult}ouioui{}"
-            }
-        }
-    },
 
     -- Fonction pour ajouter les badges sous la carte
     set_badges = function(self, card, badges)
@@ -32,7 +16,7 @@ SMODS.Seal {
     discovered = false,
     config = {
         extra = {
-            money = 3,
+            dollars = 3,
             mult = 15,
             chips = 50
         }
@@ -51,14 +35,14 @@ loc_vars = function(self, info_queue, card)
             current_effect = 1 -- Première position sélectionnée
         elseif card == highlighted[#highlighted] then
             current_effect = 2 -- Dernière position sélectionnée
+        else
+            current_effect = 3 -- Milieu sélectionné
         end
     end
 
-    -- Renvoie les variables au fichier .json de traduction (localization)
-    -- pour changer le texte du tooltip dynamiquement selon la position
     return {
         vars = {
-            current_effect
+            card.ability.seal.extra.mult, card.ability.seal.extra.dollars, card.ability.seal.extra.chips, current_effect
         }
     }
 end,
@@ -76,21 +60,21 @@ calculate = function(self, card, context)
         -- EFFET 1 : La carte est la PREMIÈRE à marquer des points
         if #scoring_hand > 0 and card == scoring_hand[1] then
             return {
-                message = "dusk",
+                message = "dawn",
                 mult = card.ability.seal.extra.mult
             }
             
         -- EFFET 2 : La carte est la DERNIÈRE à marquer des points
         elseif #scoring_hand > 0 and card == scoring_hand[#scoring_hand] then
             return {
-                message = "dawn",
+                message = "zenith",
                 p_dollars = card.ability.seal.extra.money
             }
             
         -- EFFET 3 : La carte est au MILIEU
         else   --if #scoring_hand > 0 and card ~= scoring_hand[1] and card ~= scoring_hand[#scoring_hand] then
             return {
-                message = "zenith",
+                message = "dusk",
                 chips = card.ability.seal.extra.chips
             }
         end

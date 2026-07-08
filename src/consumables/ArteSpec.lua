@@ -37,7 +37,7 @@ SMODS.Consumable {
         local conv_card = G.hand.highlighted[1]
         G.E_MANAGER:add_event(Event({
             func = function()
-                play_sound("crumple2", 1.5,2)
+                play_sound("crumple2", 2,3)
                 card:juice_up(0.3, 0.5)
                 return true
             end
