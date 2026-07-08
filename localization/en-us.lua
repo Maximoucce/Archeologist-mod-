@@ -33,11 +33,10 @@ return {
             c_maxarch_ArteSpec = {
                 name = "Artefact",
                 text = {
-                "Add a {C:attention}Scarab Seal{}",
-                "to {C:attention}#1#{} selected",
-                "card in your hand",
-                },
-                unlock = {"Use {C:attention}1{} {C:tarot,T:c_maxarch_ExcTarot,E:1}Excavation{} card"}
+                    "Add a {V:1}Scarab Seal{}",
+                    "to {C:attention}#1#{} selected",
+                    "card in your hand"
+                }
             }
         },
         Mod = {
@@ -53,6 +52,6 @@ return {
                     "modding community for their help and feeback {C:purple}<3{}"
                 }
             }
-        },
+        }
     }
 }

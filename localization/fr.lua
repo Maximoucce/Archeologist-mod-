@@ -29,6 +29,16 @@ return {
                 }
             }
         },
+        Spectral = {
+            c_maxarch_ArteSpec = {
+                name = "Artéfact",
+                text = {
+                    "Ajoute un {V:1}Sceau Scarabée{}",
+                    "à {C:attention}#1#{} carte sélectionnée",
+                    "dans votre main"
+                }
+            }
+        },
         Mod = {
             MaxArchMod = {
                 name = "Mod Archéologue",

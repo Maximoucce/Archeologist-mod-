@@ -26,7 +26,7 @@ SMODS.Atlas {
 
 SMODS.Atlas {
     key = "ArteImage",
-    path = "Arte1.png",
+    path = "SoulArte1.png",
     px = 71,
     py = 95
 }
