@@ -24,6 +24,20 @@ SMODS.Atlas {
     py = 34
 }
 
+SMODS.Atlas {
+    key = "ArteImage",
+    path = "Arte1.png",
+    px = 71,
+    py = 95
+}
+
+SMODS.Atlas {
+    key = "ScarImg",
+    path = "Scar1.png",
+    px = 27,
+    py = 27
+}
+
 SMODS.Font{
     key = "egy-hier",
     path = "ancient-egyptian-hieroglyphs.ttf",
@@ -42,4 +56,9 @@ end
 local jokers_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/jokers")
 for _, file in ipairs(jokers_src) do
     assert(SMODS.load_file("src/jokers/" .. file))()
+end
+
+local seals_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/seals")
+for _, file in ipairs(seals_src) do
+    assert(SMODS.load_file("src/seals/" .. file))()
 end

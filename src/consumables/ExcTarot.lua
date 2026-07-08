@@ -39,7 +39,7 @@ SMODS.Consumable {
 
         if SMODS.pseudorandom_probability(card, "Excavation", 1, card.ability.extra.odds) then
             ease_dollars(card.ability.extra.dollars)
-            play_sound("polychrome1", math.random(0.5, 2), 0,5)
+            play_sound("polychrome1", 1, 0.5)
             attention_text({
                 text = "Treasure !",
                 scale = 1.3,

@@ -19,6 +19,15 @@ return {
                     "{C:mult}copy itself{}"
                 }
             },
+            Scarab_Seal = {
+                name = "Scarab Seal",
+                text = {
+                    "Earn {C:money}$#1#{} when this",
+                    "card is played",
+                    "and scores",
+                },
+                unlock = {"Use {C:attention}1{} {C:tarot,T:c_maxarch_ExcTarot,E:1}Excavation{} card"}
+            }
         },
         Tarot = {
             c_maxarch_ExcTarot = {
@@ -27,6 +36,17 @@ return {
                     "{C:green,s:1.1}#1# in #2#{} {C:default,s:1.1}chance to win{} {C:money,s:1.1}$#3#{}",
                     "else triggers the {X:spectral,C:edition,E:1}Pharaoh's Curse{}"
                 }
+            }
+        },
+        Spectral = {
+            c_maxarch_ArteSpec = {
+                name = "Artefact",
+                text = {
+                "Add a {C:attention}Scarab Seal{}",
+                "to {C:attention}#1#{} selected",
+                "card in your hand",
+                },
+                unlock = {"Use {C:attention}1{} {C:tarot,T:c_maxarch_ExcTarot,E:1}Excavation{} card"}
             }
         },
         Mod = {
