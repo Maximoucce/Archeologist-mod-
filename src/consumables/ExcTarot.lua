@@ -6,7 +6,7 @@ SMODS.Consumable {
         y = 0
     },
     discovered = false,
-    set = 'Tarot',
+    set = "Tarot",
     keep_on_use = false, 
     
     config = {

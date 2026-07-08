@@ -33,9 +33,9 @@ SMODS.Atlas {
 
 SMODS.Atlas {
     key = "ScarImg",
-    path = "Scar1.png",
-    px = 27,
-    py = 27
+    path = "SCARR1.png",
+    px = 71,
+    py = 95
 }
 
 SMODS.Font{

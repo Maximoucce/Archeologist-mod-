@@ -1,11 +1,13 @@
 -- Gold Seal
 SMODS.Seal {
     key = "ScarabSeal",
+    atlas = "ScarImg",
     pos = {
-        x = 2,
+        x = 0,
         y = 0
     },
     badge_colour = G.C.GOLD,
+    --HEX(fee861)
     unlocked = false,
     discovered = false,
     config = {
@@ -32,13 +34,14 @@ SMODS.Seal {
         return false
     end,
 
-    
     get_p_dollars = function(self, card)
         return card.ability.seal.extra.money
     end,
+
     loc_vars = function(self, info_queue, card)
         return { vars = { self.config.extra.money } }
     end,
+
     draw = function(self, card, layer)
         if (layer == 'card' or layer == 'both') and card.sprite_facing == 'front' then
             G.shared_seals[card.seal].role.draw_major = card

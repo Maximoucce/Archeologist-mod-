@@ -18,15 +18,6 @@ return {
                     "{C:mult}Archeologist can't{}",
                     "{C:mult}copy itself{}"
                 }
-            },
-            Scarab_Seal = {
-                name = "Scarab Seal",
-                text = {
-                    "Earn {C:money}$#1#{} when this",
-                    "card is played",
-                    "and scores",
-                },
-                unlock = {"Use {C:attention}1{} {C:tarot,T:c_maxarch_ExcTarot,E:1}Excavation{} card"}
             }
         },
         Tarot = {
@@ -62,6 +53,6 @@ return {
                     "modding community for their help and feeback {C:purple}<3{}"
                 }
             }
-        }
+        },
     }
 }
