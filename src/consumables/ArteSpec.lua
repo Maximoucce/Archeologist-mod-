@@ -37,6 +37,7 @@ SMODS.Consumable {
     }
     end,
 
+-- Code du sceau doré modifié pour l'effet
     use = function(self, card, area, copier)
         local conv_card = G.hand.highlighted[1]
         G.E_MANAGER:add_event(Event({

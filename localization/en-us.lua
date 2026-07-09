@@ -25,10 +25,10 @@ return {
                     "Effect varies with card's",
                     "position in played hand :",
                     "{X:dark_edition,C:white}Current#5#effect#5#:{} {C:attention}#4#{}",
-                    "{C:inactive,E:1}------------------------{}",
-                    "{C:tarot}dawn{} : {C:mult}+#1#{} mult if {C:attention}first{}",
+                    "{C:inactive,E:1}----------------------------{}",
+                    "{C:tarot}dawn{} : {C:chips}+#3#{} Chips and {C:mult}+#1#{} Mult if {C:attention}first{}",
                     "{C:gold}zenith{} : {C:money}+#2#${} if in the {C:attention}middle{}",
-                    "{C:mult}dusk{} : {C:chips}+#3#{} chips if {C:attention}last{}"
+                    "{C:mult}dusk{} : {X:mult,C:white}X#6#{} Mult if {C:attention}last{}"
 
                 }
             }
