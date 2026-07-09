@@ -22,40 +22,23 @@ return {
             maxarch_scarabs_seal = {
                 name = "Scarab Seal",
                 text = {
-                    "Effect varies with position :",
-                    "{X:mult,C:white} Current effect : {C:attention}#4#",
-                    "{C:inactive}-----------------------------{}",
-                    "1.{C:mult}+#1#{} mult if {C:attention}first{} card to score",
-                    "2.{C:dollars}+#2#${} if card scores in the {C:attention}middle{}",
-                    "3.{C:chips}+#3#{} chips if {C:attention}last{} card to score"
+                    "Effect varies with card's",
+                    "position in played hand :",
+                    "{X:dark_edition,C:white}Current#5#effect#5#:{} {C:attention}#4#{}",
+                    "{C:inactive,E:1}------------------------{}",
+                    "{C:tarot}dawn{} : {C:mult}+#1#{} mult if {C:attention}first{}",
+                    "{C:gold}zenith{} : {C:money}+#2#${} if in the {C:attention}middle{}",
+                    "{C:mult}dusk{} : {C:chips}+#3#{} chips if {C:attention}last{}"
 
                 }
-            },
-            dawn = {
-                name = "dawn",
-                text = {
-                    ""
-                }
-            },
-            zenith = {
-                name = "zenith",
-                text = {
-                    ""
-                }
-            },
-            dusk = {
-                name = "dusk",
-                text = {
-                    ""
-                }
-            },
+            }
         },
         Tarot = {
             c_maxarch_ExcTarot = {
                 name = "Excavation",
                 text = {
                     "{C:green,s:1.1}#1# in #2#{} {C:default,s:1.1}chance to win{} {C:money,s:1.1}$#3#{}",
-                    "else triggers the {X:spectral,C:edition,E:1}Pharaoh's Curse{}"
+                    "else triggers the {X:spectral,C:edition,E:1}Pharaoh's#4#Curse{}"
                 }
             }
         },

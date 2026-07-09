@@ -17,14 +17,18 @@ SMODS.Consumable {
 
     config = {
         extra = {
-            seal = "maxarch_ScarabSeal"
+            seal = "ScarabS"
         },
         max_highlighted = 1
     },
 
     loc_vars = function(self, info_queue, card)
-        if G.P_SEALS[card.ability.extra.seal] then
-            info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
+        --if G.P_SEALS[card.ability.extra.seal] then
+          --  info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
+      --  end
+-- Steamodded va chercher le sceau et générer son tooltip complet automatiquement !
+        if G.P_SEALS["maxarch_ScarabS"] then
+            info_queue[#info_queue + 1] = G.P_SEALS["maxarch_ScarabS"]
         end
         return { vars = { 
             card.ability.max_highlighted,
@@ -47,7 +51,7 @@ SMODS.Consumable {
             trigger = 'after',
             delay = 0.1,
             func = function()
-                conv_card:set_seal(card.ability.extra.seal, nil, true)
+                conv_card:set_seal("maxarch_ScarabS", nil, true)
                 return true
             end
         }))
