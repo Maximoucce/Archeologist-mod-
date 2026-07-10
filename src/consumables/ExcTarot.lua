@@ -11,13 +11,13 @@ SMODS.Consumable {
     
     config = {
         extra = {
-            odds = 2,
+            odds = 3,
             dollars = 50
         }
     },
 
     loc_vars = function(self, info_queue, card)
-        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
+        local numerator, denominator = SMODS.get_probability_vars(card, 2, card.ability.extra.odds,
             "maxarch_ExcTarot")
         return { vars = { numerator, denominator, card.ability.extra.dollars, " " } }
     end,
