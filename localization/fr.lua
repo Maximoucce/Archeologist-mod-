@@ -56,9 +56,9 @@ return {
             MaxArchMod = {
                 name = "Mod Archéologue",
                 text = {
-                    "Mon premier mod, il ajoute un tout nouveau joker",
-                    "avec une mécanique intéressante et fonctionnelle(?)",
-                    "{X:mult,C:white}!!!{} {C:mult} Ce joker à tendance à faire crash le jeu{}",
+                    "C'est mon premier mod, il ajoute un peu de tout",
+                    "avec des mécaniques intéressantes et fonctionnelles(?)",
+                    "{X:mult,C:white}!!!{} {C:mult} Le joker à tendance à faire crash le jeu{}",
                     "{C:mult}si associé à des jokers moddés complexes{}",
                     "Merci {C:chips}@theAstra_{} pour les tutoriels youtube",
                     "pour faire des mods Balatro, et la communauté de",
