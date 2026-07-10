@@ -20,15 +20,15 @@ return {
                 }
             },
             maxarch_scarabs_seal = {
-                name = "Scarab Seal",
+                name = "Sceau Scarabée",
                 text = {
-                    "Effect varies with card's",
-                    "position in played hand :",
-                    "{X:dark_edition,C:white}Current#5#effect#5#:{} {C:attention}#4#{}",
-                    "{C:inactive,E:1}----------------------------{}",
-                    "{C:tarot}dawn{} : {C:chips}+#3#{} Chips and {C:mult}+#1#{} Mult if {C:attention}first{}",
-                    "{C:gold}zenith{} : {C:money}+#2#${} if in the {C:attention}middle{}",
-                    "{C:mult}dusk{} : {X:mult,C:white}X#6#{} Mult if {C:attention}last{}"
+                    "Effet varie avec la position de",
+                    "la carte dans la main jouée :",
+                    "{X:dark_edition,C:white}Effet#5#actuel#5#:{} {C:attention}#4#{}",
+                    "{C:inactive,E:1}---------------------------------{}",
+                    "{C:tarot}aube{} : {C:chips}+#3#{} Jetons et {C:mult}+#1#{} Mult si {C:attention}dernière{}",
+                    "{C:gold}zénith{} : {C:money}+#2#${} si au {C:attention}milieu{}",
+                    "{C:mult}crépuscule{} : {X:mult,C:white}X#6#{} Mult si {C:attention}dernière{}"
 
                 }
             }
@@ -37,7 +37,7 @@ return {
             c_maxarch_ExcTarot = {
                 name = "Excavation",
                 text = {
-                    "{C:green,s:1.1}#1# sur #2#{} {C:default,s:1.1}de gagner{} {C:money,s:1.1}$#50#{}",
+                    "{C:green,s:1.1}#1# sur #2#{} {C:default,s:1.1}de gagner{} {C:money,s:1.1}$#3#{}",
                     "sinon déclenche la {X:spectral,C:edition,E:1}Malédiction#4#du#4#Pharaon{}"
                 }
             }

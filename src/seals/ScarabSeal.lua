@@ -29,8 +29,8 @@ SMODS.Seal {
     config = {
         extra = {
             dollars = 2,
-            mult = 4,
-            chips = 30,
+            mult = 3,
+            chips = 20,
             xmult = 1.3
         }
     },
@@ -87,7 +87,6 @@ calculate = function(self, card, context)
         -- zenith : La carte est au MILIEU
         else   --if #scoring_hand > 0 and card ~= scoring_hand[1] and card ~= scoring_hand[#scoring_hand] then
             return {
-                message = "zenith",
                 p_dollars = self.config.extra.dollars
             }
         end
