@@ -18,6 +18,20 @@ SMODS.Sound({
 })
 
 SMODS.Atlas {
+    key = "DesImage",
+    path = "DSRT.png",
+    px = 71,
+    py = 95
+}
+
+SMODS.Atlas {
+    key = "sanddd",
+    path = "sandtest.png",
+    px = 71,
+    py = 95
+}
+
+SMODS.Atlas {
     key = "modicon",
     path = "ArchTagHDf.png",
     px = 34,
@@ -61,4 +75,9 @@ end
 local seals_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/seals")
 for _, file in ipairs(seals_src) do
     assert(SMODS.load_file("src/seals/" .. file))()
+end
+
+local enhancements_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/enhancements")
+for _, file in ipairs(enhancements_src) do
+    assert(SMODS.load_file("src/enhancements/" .. file))()
 end

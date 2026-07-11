@@ -40,6 +40,12 @@ return {
                     "{C:green,s:1.1}#1# in #2#{} {C:default,s:1.1}chance to win{} {C:money,s:1.1}$#3#{}",
                     "else triggers the {X:spectral,C:edition,E:1}Pharaoh's#4#Curse{}"
                 }
+            },
+            c_maxarch_DesTarot = {
+                name = "Desert",
+                text = {
+                    "Sandy Card"
+                }
             }
         },
         Spectral = {
@@ -49,6 +55,14 @@ return {
                     "Add a {V:1}Scarab Seal{}",
                     "to {C:attention}#1#{} selected",
                     "card in your hand"
+                }
+            }
+        },
+        Enhanced = {
+            m_maxarch_sanddd = {
+                name = "Sandy Card",
+                text = {
+                    "{V:1}-#1#%{} needed chips"
                 }
             }
         },

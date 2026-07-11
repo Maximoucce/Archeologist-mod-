@@ -7,7 +7,7 @@ SMODS.Consumable {
     },
     discovered = false,
     set = "Tarot",
-    keep_on_use = false, 
+    keep_on_use = false,
     
     config = {
         extra = {
