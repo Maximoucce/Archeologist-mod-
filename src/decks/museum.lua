@@ -1,39 +1,50 @@
--- Green Deck
 SMODS.Back {
-    key = "green",
-    pos = { x = 2, y = 2 },
-    config = { extra_hand_bonus = 0, extra_discard_bonus = 0, no_interest = true },
+    key = "Museum",
+    pos = {
+        x = 0,
+        y = 0
+    },
+
+    config = {
+        extra = {
+            dollars = 1
+        }
+    },
+
     unlocked = true,
+
     loc_vars = function(self, info_queue, back)
-        return { vars = { self.config.extra_hand_bonus, self.config.extra_discard_bonus } }
+        return { vars = { self.config.extra.dollars, 1, 2, 4 } }
     end,
-    -- The config field already handles the functionality so it doesn't need to be implemented
-    -- The following is how the implementation would be
-    --[[
-    apply = function(self, back)
-        G.GAME.modifiers.money_per_hand = self.config.extra_hand_bonus
-        G.GAME.modifiers.money_per_discard = self.config.extra_discard_bonus
-        G.GAME.modifiers.no_interest = true
-    end,
-    ]]
-    locked_loc_vars = function(self, info_queue, back)
-        return { vars = { 75 } }
-    end,
-    check_for_unlock = function(self, args)
-        return args.type == 'discover_amount' and args.amount >= 75
-    end
-}
--- Baseball Card
-SMODS.Joker {
-    config = { extra = { xmult = 1.5 } },
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.xmult } }
-    end,
+
     calculate = function(self, card, context)
-        if context.other_joker and context.other_joker:is_rarity("Uncommon") then
-            return {
-                xmult = card.ability.extra.xmult
-            }
+        if context.end_of_round and context.game_over == false and context.main_eval and context.beat_boss then
+            if context.other_joker and context.other_joker:is_rarity("Common") then
+                return {
+                    dollars = 1*self.config.extra.dollars
+                }
+            elseif context.other_joker and context.other_joker:is_rarity("Uncommon") then
+                return {
+                    dollars = 2*self.config.extra.dollars
+                }
+            elseif context.other_joker and context.other_joker:is_rarity("Rare") then
+                return {
+                    dollars = 4*self.config.extra.dollars
+                }
+            elseif context.other_joker and context.other_joker:is_rarity("Legendary") then
+                if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                    G.E_MANAGER:add_event(Event({
+                        func = (function()
+                            SMODS.add_card {
+                                set = 'Spectral',
+                                key_append = 'vremade_sixth_sense' -- Optional, useful for manipulating the random seed and checking the source of the creation in `in_pool`.
+                            }
+                            G.GAME.consumeable_buffer = 0
+                            return true
+                        end)}))
+                    end
+            end
         end
-    end,
+    end
 }

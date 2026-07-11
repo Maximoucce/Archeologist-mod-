@@ -44,7 +44,9 @@ return {
             c_maxarch_DesTarot = {
                 name = "Desert",
                 text = {
-                    "Sandy Card"
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}Sandy Card{}"
                 }
             }
         },
@@ -62,7 +64,15 @@ return {
             m_maxarch_sanddd = {
                 name = "Sandy Card",
                 text = {
-                    "{V:1}-#1#%{} needed chips"
+                    "{V:1}-#1#%{} blind size"
+                }
+            }
+        },
+        Back = {
+            b_maxarch_Museum = {
+                name = "Museum Deck",
+                text = {
+                    "testtetstetet"
                 }
             }
         },

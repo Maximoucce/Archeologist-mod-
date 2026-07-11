@@ -52,6 +52,13 @@ SMODS.Atlas {
     py = 95
 }
 
+SMODS.Atlas {
+    key = "Museum",
+    path = "Museetest.png",
+    px = 71,
+    py = 95
+}
+
 SMODS.Font{
     key = "egy-hier",
     path = "ancient-egyptian-hieroglyphs.ttf",
@@ -80,4 +87,9 @@ end
 local enhancements_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/enhancements")
 for _, file in ipairs(enhancements_src) do
     assert(SMODS.load_file("src/enhancements/" .. file))()
+end
+
+local decks_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/decks")
+for _, file in ipairs(decks_src) do
+    assert(SMODS.load_file("src/decks/" .. file))()
 end
