@@ -1,62 +1,8 @@
 SMODS.Atlas {
-    key = "ArchHDf",
-    path = "ArchHDf.png",
-    px = 71,
-    py = 95
-}
-
-SMODS.Atlas {
-    key = "ExcImage",
-    path = "ExcHDred.png",
-    px = 71,
-    py = 95
-}
-
-SMODS.Sound({
-    key = "PC",
-    path = "PC.ogg"
-})
-
-SMODS.Atlas {
-    key = "DesImage",
-    path = "DSRT.png",
-    px = 71,
-    py = 95
-}
-
-SMODS.Atlas {
-    key = "sanddd",
-    path = "sandtest.png",
-    px = 71,
-    py = 95
-}
-
-SMODS.Atlas {
     key = "modicon",
     path = "ArchTagHDf.png",
     px = 34,
     py = 34
-}
-
-SMODS.Atlas {
-    key = "ArteImage",
-    path = "SoulArte3.png",
-    px = 71,
-    py = 95
-}
-
-SMODS.Atlas {
-    key = "ScarImg",
-    path = "SCARR11.png",
-    px = 71,
-    py = 95
-}
-
-SMODS.Atlas {
-    key = "Museum",
-    path = "Museetest.png",
-    px = 71,
-    py = 95
 }
 
 SMODS.Font{

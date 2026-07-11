@@ -1,3 +1,10 @@
+SMODS.Atlas {
+    key = "sanddd",
+    path = "sandtest.png",
+    px = 71,
+    py = 95
+}
+
 SMODS.Enhancement {
     key = "sanddd",
     atlas = "sanddd",

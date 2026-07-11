@@ -1,4 +1,11 @@
 --infos générales
+SMODS.Atlas {
+    key = "ScarImg",
+    path = "SCARR11.png",
+    px = 71,
+    py = 95
+}
+
 SMODS.Seal {
     key = "ScarabS",
     atlas = "ScarImg",

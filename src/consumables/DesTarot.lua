@@ -1,12 +1,19 @@
+SMODS.Atlas {
+    key = "DesImage",
+    path = "DSRT.png",
+    px = 71,
+    py = 95
+}
+
 SMODS.Consumable {
     key = "DesTarot",
+    set = "Tarot",
     atlas = "DesImage",
     pos = {
         x = 0,
         y = 0
     },
     discovered = false,
-    set = "Tarot",
     keep_on_use = false,
 
     config = {

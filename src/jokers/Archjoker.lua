@@ -63,9 +63,17 @@ function Game:update(dt)
 end
 
 --info générales du joker
+
+SMODS.Atlas {
+    key = "ArchHDf",
+    path = "ArchHDf.png",
+    px = 71,
+    py = 95
+}
+
 SMODS.Joker {
-    key = 'Archjoker',
-    atlas = 'ArchHDf',
+    key = "Archjoker",
+    atlas = "ArchHDf",
     pos = {
         x = 0,
         y = 0

@@ -1,4 +1,10 @@
--- Talisman
+SMODS.Atlas {
+    key = "ArteImage",
+    path = "SoulArte3.png",
+    px = 71,
+    py = 95
+}
+
 SMODS.Consumable {
     key = "ArteSpec",
     set = "Spectral",

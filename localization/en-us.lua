@@ -72,7 +72,12 @@ return {
             b_maxarch_Museum = {
                 name = "Museum Deck",
                 text = {
-                    "testtetstetet"
+                    "After beating a {C:attention}Boss Blind{}, earn :",
+                    "{C:money}$#2#{} per {C:common}Common{}",
+                    "{C:money}$#3#{} per {C:uncommon}Uncommon{}",
+                    "{C:money}$#4#{} per {C:rare}Rare{}",
+                    "one {C:spectral,E:1}spectral card{} per {C:legendary}Legendary{}",
+                    "No {C:attention}Interest{} or extra {C:blue}Hand{} bonus"
                 }
             }
         },

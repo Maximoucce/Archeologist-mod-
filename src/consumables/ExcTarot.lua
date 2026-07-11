@@ -1,3 +1,15 @@
+SMODS.Atlas {
+    key = "ExcImage",
+    path = "ExcHDred.png",
+    px = 71,
+    py = 95
+}
+
+SMODS.Sound({
+    key = "PC",
+    path = "PC.ogg"
+})
+
 SMODS.Consumable {
     key = "ExcTarot",
     atlas = "ExcImage",
