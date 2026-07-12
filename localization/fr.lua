@@ -52,6 +52,33 @@ return {
                 }
             }
         },
+        Enhanced = {
+            m_maxarch_sanddd = {
+                name = "Carte Sableuse",
+                text = {
+                    "{V:1}-#1#%{} taille de blinde"
+                }
+            }
+        },
+        Back = {
+            b_maxarch_Museum = {
+                name = "Deck du Musée",
+                text = {
+                    "After beating a {C:attention}Boss Blind{}, earn :",
+                    "{C:money}$#2#{} per {C:common}Common{} Joker",
+                    "{C:money}$#3#{} per {C:uncommon}Uncommon{} Joker",
+                    "{C:money}$#4#{} per {C:rare}Rare{} Joker",
+                    "one {C:spectral,E:1}spectral card{}",
+                    "per {C:legendary}Legendary{} Joker",
+                    "No {C:attention}Interest{} or extra {C:blue}Hand{} bonus"
+                },
+                unlock = {
+                    "Discover at least",
+                    "{C:attention}#1#{} items from",
+                    "your collection"
+                }
+            }
+        },
         Mod = {
             MaxArchMod = {
                 name = "Mod Archéologue",
