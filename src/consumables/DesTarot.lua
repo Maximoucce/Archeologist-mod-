@@ -1,6 +1,6 @@
 SMODS.Atlas {
     key = "DesImage",
-    path = "DSRTFF.png",
+    path = "DSRT12.png",
     px = 71,
     py = 95
 }

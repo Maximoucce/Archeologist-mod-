@@ -29,3 +29,8 @@ local decks_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/dec
 for _, file in ipairs(decks_src) do
     assert(SMODS.load_file("src/decks/" .. file))()
 end
+
+local skiptags_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/skiptags")
+for _, file in ipairs(skiptags_src) do
+    assert(SMODS.load_file("src/skiptags/" .. file))()
+end
