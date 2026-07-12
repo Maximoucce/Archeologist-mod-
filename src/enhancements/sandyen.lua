@@ -1,6 +1,6 @@
 SMODS.Atlas {
     key = "sanddd",
-    path = "sandtest.png",
+    path = "sandfinal.png",
     px = 71,
     py = 95
 }
@@ -14,7 +14,7 @@ SMODS.Enhancement {
     },
 
     config = {
-        reduction = 2 -- Pourcentage de réduction
+        reduction = 3 -- Pourcentage de réduction
     },
 
     loc_vars = function(self, info_queue, card)
