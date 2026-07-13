@@ -19,6 +19,12 @@ return {
                     "{C:mult}copy itself{}"
                 }
             },
+            brokeF = {
+                name = "Broken Fossil"
+            },
+            brokemsg = {
+                name = "Broken !"
+            },
             maxarch_scarabs_seal = {
                 name = "Scarab Seal",
                 text = {
@@ -91,7 +97,7 @@ return {
             bl_maxarch_bossil = {
                 name = "The Fossil",
                 text = {
-                    "test"
+                    "Careful, flames break it"
                 }
             }
         },

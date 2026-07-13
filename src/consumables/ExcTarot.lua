@@ -55,7 +55,7 @@ SMODS.Consumable {
             attention_text({
                 text = "Treasure !",
                 scale = 1.3,
-                hold = 2,
+                hold = 1.5,
                 major = card,
                 backdrop_colour = G.C.GOLD,
                 card:juice_up(0.3, 0.5)
@@ -63,9 +63,9 @@ SMODS.Consumable {
         else
             play_sound("maxarch_PC", 1, 0.5)
             attention_text({
-                text = "Pharaoh's curse !",
+                loc_text = "Pharaoh's curse !",
                 scale = 1.2,
-                hold = 3,
+                hold = 1.5,
                 major = card,
                 backdrop_colour = G.C.MULT,
                 card:juice_up(0.3, 0.5)

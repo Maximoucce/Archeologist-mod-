@@ -9,6 +9,16 @@ function beatInOneHand()
     return SMODS.last_hand_oneshot == true
 end
 
+local e_sr = G.FUNCS.start_run
+G.FUNCS.start_run = function(e)
+    e_sr(e) -- Lance la run normalement
+    
+    -- On trouve ton boss dans le registre des Blinds et on reset sa position
+    if G.P_BLINDS and G.P_BLINDS['bl_maxarch_bossil'] then
+        G.P_BLINDS['bl_maxarch_bossil'].pos.y = 0
+    end
+end
+
 SMODS.Blind {
     key = "bossil",
     atlas = "bossilimg",
@@ -16,27 +26,33 @@ SMODS.Blind {
     pos = { x = 0, y = 0 },
     boss_colour = HEX('7E6752'),
     boss = { min = 2 },
-    dollars = 10,
+    dollars = 5,
+    discovered = false,
 
     defeat = function(self)
         if beatInOneHand() then
-            play_sound("glass2", 0.5, 1)
-            
-            -- Safely change the sprite position on this specific blind instance
-            self.pos.x = 0
-            self.posy.y = 1
-            
-            -- If you want to change its UI sprite immediately before it disappears:
-            if G.GAME.blind and G.GAME.blind.children.animated_sprite then
-                G.GAME.blind.children.animated_sprite:set_sprite_pos({x = 0, y = 1})
-            end
+            self.pos.y = 1
+            attention_text({
+                text = "brokemsg",
+                set = "Other",
+                scale = 1,
+                hold = 1.5,
+                major = self,
+                backdrop_colour = G.C.RED
+            })
         end
     end,
-    modify_dollars = function(self)
+
+    calc_dollar_bonus = function(self,card)
         if beatInOneHand() then
-            G.GAME.blind.dollars = 0
-            return G.GAME.blind.dollars -- Force la récompense affichée et donnée à 0$
+            play_sound("glass2", 0.5, 1)
+            self.pos.y = 1
+            G.GAME.blind.dollars = -10
+            return G.GAME.blind.dollars, {
+                key = "brokeF",
+                set = "Other",
+                text_colour = G.C.RED
+            }
         end
-        return G.GAME.blind.dollars -- Donne les 10$ par défaut si battu en plusieurs mains
     end
 }
