@@ -26,7 +26,8 @@ SMODS.Back {
     end,
 
     unlocked = false,
-    --Code de Black Deck
+
+--Code de Black Deck
     locked_loc_vars = function(self, info_queue, back)
         return { vars = { 150 } }
     end,

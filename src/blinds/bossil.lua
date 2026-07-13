@@ -5,15 +5,15 @@ SMODS.Atlas {
     py = 32
 }
 
+--Code du venant du Yahimod (opentolan)
 function beatInOneHand()
     return SMODS.last_hand_oneshot == true
 end
 
+--Fonction pour réinitialiser le sprite
 local e_sr = G.FUNCS.start_run
 G.FUNCS.start_run = function(e)
-    e_sr(e) -- Lance la run normalement
-    
-    -- On trouve ton boss dans le registre des Blinds et on reset sa position
+    e_sr(e)
     if G.P_BLINDS and G.P_BLINDS['bl_maxarch_bossil'] then
         G.P_BLINDS['bl_maxarch_bossil'].pos.y = 0
     end
@@ -29,25 +29,18 @@ SMODS.Blind {
     dollars = 5,
     discovered = false,
 
-    defeat = function(self)
-        if beatInOneHand() then
-            self.pos.y = 1
-            attention_text({
-                text = "brokemsg",
-                set = "Other",
-                scale = 1,
-                hold = 1.5,
-                major = self,
-                backdrop_colour = G.C.RED
-            })
-        end
-    end,
-
     calc_dollar_bonus = function(self,card)
         if beatInOneHand() then
+            attention_text({
+                text = "Broken !",
+                scale = 1,
+                hold = 1.3,
+                major = G.GAME.blind,
+                backdrop_colour = G.C.RED
+            })
             play_sound("glass2", 0.5, 1)
             self.pos.y = 1
-            G.GAME.blind.dollars = -10
+            G.GAME.blind.dollars = -15
             return G.GAME.blind.dollars, {
                 key = "brokeF",
                 set = "Other",

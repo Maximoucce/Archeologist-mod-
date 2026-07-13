@@ -20,10 +20,10 @@ return {
                 }
             },
             brokeF = {
-                name = "Broken Fossil"
+                name = "Broken Fossil",
             },
             brokemsg = {
-                name = "Broken !"
+                name = "Broken !",
             },
             maxarch_scarabs_seal = {
                 name = "Scarab Seal",

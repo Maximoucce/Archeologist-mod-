@@ -29,10 +29,6 @@ SMODS.Consumable {
     },
 
     loc_vars = function(self, info_queue, card)
-        --if G.P_SEALS[card.ability.extra.seal] then
-          --  info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
-      --  end
--- Steamodded va chercher le sceau et générer son tooltip complet automatiquement !
         if G.P_SEALS["maxarch_ScarabS"] then
             info_queue[#info_queue + 1] = G.P_SEALS["maxarch_ScarabS"]
         end
@@ -43,7 +39,7 @@ SMODS.Consumable {
     }
     end,
 
--- Code du sceau doré modifié pour l'effet
+-- Code modifié de l'application sceau doré pour l'effet
     use = function(self, card, area, copier)
         local conv_card = G.hand.highlighted[1]
         G.E_MANAGER:add_event(Event({

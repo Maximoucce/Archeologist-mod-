@@ -40,12 +40,10 @@ SMODS.Consumable {
 
     use = function(self, card, area, copier)
 
-        -- DEBLOCAGE OFFICIEL (AVEC ANIMATION)
-        local joker_key = 'j_maxarch_Archjoker' -- Utilise la clé exacte de ton joker
+-- Déblocage de l'Archéologue
+        local joker_key = "j_maxarch_Archjoker"
 
         if G.P_CENTERS[joker_key] and not G.P_CENTERS[joker_key].unlocked then
-            -- On passe l'objet complet de G.P_CENTERS à la fonction native de Balatro.
-            -- C'est elle qui va gérer proprement la sauvegarde ET l'alerte visuelle au menu !
             unlock_card(G.P_CENTERS[joker_key])
          end
 
@@ -63,7 +61,7 @@ SMODS.Consumable {
         else
             play_sound("maxarch_PC", 1, 0.5)
             attention_text({
-                loc_text = "Pharaoh's curse !",
+                text = "Pharaoh's curse !",
                 scale = 1.2,
                 hold = 1.5,
                 major = card,

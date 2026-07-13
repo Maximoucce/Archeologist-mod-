@@ -1,4 +1,3 @@
---infos générales
 SMODS.Atlas {
     key = "ScarImg",
     path = "SCARR11.png",
@@ -30,7 +29,6 @@ SMODS.Seal {
         badges[#badges + 1] = create_badge("Archeologist Mod", HEX("a07c46"), HEX("c8f8c6"), 1)
     end,
 
---Autres infos et config
     unlocked = true,
     discovered = false,
     config = {
@@ -46,9 +44,9 @@ SMODS.Seal {
 loc_vars = function(self, info_queue, card)
     -- On regarde les cartes actuellement sélectionnées dans la main
     local highlighted = G.hand and G.hand.highlighted or {}
-    local current_effect = "none" -- Par défaut
+    local current_effect = "none"
     if #highlighted == 0 then
-        current_effect = "none" -- Pas ou plus sélectionnée
+        current_effect = "none"
     end
     if #highlighted > 0 then
         if card == highlighted[1] then
@@ -56,7 +54,7 @@ loc_vars = function(self, info_queue, card)
         elseif card == highlighted[#highlighted] then
             current_effect = "dusk" -- Dernière position sélectionnée
         else
-            current_effect = "zenith" -- Milieu sélectionnée
+            current_effect = "zenith" -- Milieu sélectionné
         end
     end
 
@@ -68,31 +66,24 @@ loc_vars = function(self, info_queue, card)
 end,
 
 -- PARTIE SCORING
---Khépri = renaissance --> +30 chips et +4 mult
---Rê = pleine puissance --> +2$
---Atoum = achèvement --> x1,3 mult
 calculate = function(self, card, context)
-    -- On s'assure qu'on calcule les points d'une carte jouée qui marque des points
     if context.cardarea == G.play and context.main_scoring then
-        
-        -- On utilise la main finale enregistrée par le jeu (scoring_hand)
         local scoring_hand = context.scoring_hand or {}
-        
-        -- dawn : La carte est la PREMIÈRE à marquer des points
+        -- dawn
         if #scoring_hand > 0 and card == scoring_hand[1] then
             return {
                 chips = self.config.extra.chips,
                 mult = self.config.extra.mult
             }
             
-        -- dusk : La carte est la DERNIÈRE à marquer des points
+        -- dusk
         elseif #scoring_hand > 0 and card == scoring_hand[#scoring_hand] then
             return {
                 x_mult = self.config.extra.xmult
             }
             
-        -- zenith : La carte est au MILIEU
-        else   --if #scoring_hand > 0 and card ~= scoring_hand[1] and card ~= scoring_hand[#scoring_hand] then
+        -- zenith
+        else   -- optionnel : if #scoring_hand > 0 and card ~= scoring_hand[1] and card ~= scoring_hand[#scoring_hand] then
             return {
                 p_dollars = self.config.extra.dollars
             }
@@ -100,7 +91,7 @@ calculate = function(self, card, context)
     end
 end,
 
---Vestige du code du sceau doré pour les reflets
+--Code du sceau doré pour les reflets
     draw = function(self, card, layer)
         if (layer == 'card' or layer == 'both') and card.sprite_facing == 'front' then
             G.shared_seals[card.seal].role.draw_major = card

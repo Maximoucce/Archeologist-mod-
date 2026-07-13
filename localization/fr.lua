@@ -19,6 +19,12 @@ return {
                     "{C:mult}se copier lui-même{}"
                 }
             },
+            brokeF = {
+                name = "Fossile Brisé",
+            },
+            brokemsg = {
+                name = "Brisé !",
+            },
             maxarch_scarabs_seal = {
                 name = "Sceau Scarabée",
                 text = {
@@ -37,7 +43,7 @@ return {
             c_maxarch_ExcTarot = {
                 name = "Excavation",
                 text = {
-                    "{C:green,s:1.1}#1# sur #2#{} {C:default,s:1.1}de gagner{} {C:money,s:1.1}$#3#{}",
+                    "{C:green,s:1.1}#1# chance(s) sur #2#{} {C:default,s:1.1}de gagner{} {C:money,s:1.1}$#3#{}",
                     "sinon déclenche la {X:spectral,C:edition,E:1}Malédiction#4#du#4#Pharaon{}"
                 }
             }
@@ -62,20 +68,28 @@ return {
         },
         Back = {
             b_maxarch_Museum = {
-                name = "Deck du Musée",
+                name = "Jeu du Musée",
                 text = {
-                    "After beating a {C:attention}Boss Blind{}, earn :",
-                    "{C:money}$#2#{} per {C:common}Common{} Joker",
-                    "{C:money}$#3#{} per {C:uncommon}Uncommon{} Joker",
-                    "{C:money}$#4#{} per {C:rare}Rare{} Joker",
-                    "one {C:spectral,E:1}spectral card{}",
-                    "per {C:legendary}Legendary{} Joker",
-                    "No {C:attention}Interest{} or extra {C:blue}Hand{} bonus"
+                    "Après avoir battu une {C:attention}Blinde Boss{}, recevez :",
+                    "{C:money}$#2#{} par Joker {C:common}Commun{}",
+                    "{C:money}$#3#{} par Joker {C:uncommon}Peu Commun{}",
+                    "{C:money}$#4#{} par Joker {C:rare}Rare{}",
+                    "une {C:spectral,E:1}carte spectrale{}",
+                    "par Joker {C:legendary}Légendaire{}",
+                    "Pas d'{C:attention}intérêts{} ni de bonus de {C:blue}main restante{}"
                 },
                 unlock = {
-                    "Discover at least",
-                    "{C:attention}#1#{} items from",
-                    "your collection"
+                    "Découvrez au moins",
+                    "{C:attention}#1#{} objets de",
+                    "votre collection"
+                }
+            }
+        },
+        Blind = {
+            bl_maxarch_bossil = {
+                name = "Le Fossile",
+                text = {
+                    "Attention, les flammes le brisent"
                 }
             }
         },
