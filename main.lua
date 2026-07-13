@@ -34,3 +34,8 @@ local skiptags_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/
 for _, file in ipairs(skiptags_src) do
     assert(SMODS.load_file("src/skiptags/" .. file))()
 end
+
+local blinds_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/blinds")
+for _, file in ipairs(blinds_src) do
+    assert(SMODS.load_file("src/blinds/" .. file))()
+end

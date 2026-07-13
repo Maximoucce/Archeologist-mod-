@@ -87,6 +87,14 @@ return {
                 }
             }
         },
+        Blind = {
+            bl_maxarch_bossil = {
+                name = "The Fossil",
+                text = {
+                    "test"
+                }
+            }
+        },
         Mod = {
             MaxArchMod = {
                 name = "Archeologist Mod",

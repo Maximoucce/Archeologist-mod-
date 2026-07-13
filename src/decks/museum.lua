@@ -40,29 +40,30 @@ SMODS.Back {
 
     calc_dollar_bonus = function(self, card)
         local total_dollars = 0
-        for _, j in ipairs(G.jokers.cards) do
-            if j.config.center.rarity == 1 then
-                total_dollars = total_dollars + (1*self.config.extra.dollars)
-            elseif j.config.center.rarity == 2 then
-                total_dollars = total_dollars + (2*self.config.extra.dollars)
-            elseif j.config.center.rarity == 3 then
-                total_dollars = total_dollars + (4*self.config.extra.dollars)
-            elseif j.config.center.rarity == 4 then
-                --Code de 6th sense
-                if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-                    G.E_MANAGER:add_event(Event({
-                        func = (function()
-                            SMODS.add_card {
-                                set = "Spectral",
-                                ---key_append = 'vremade_sixth_sense' -- Optional, useful for manipulating the random seed and checking the source of the creation in `in_pool`.
-                            }
-                        G.GAME.consumeable_buffer = 0
-                            return true
-                        end)}))
+        if G.GAME.blind.boss then
+            for _, j in ipairs(G.jokers.cards) do
+                if j.config.center.rarity == 1 then
+                    total_dollars = total_dollars + (1*self.config.extra.dollars)
+                elseif j.config.center.rarity == 2 then
+                    total_dollars = total_dollars + (2*self.config.extra.dollars)
+                elseif j.config.center.rarity == 3 then
+                    total_dollars = total_dollars + (4*self.config.extra.dollars)
+                elseif j.config.center.rarity == 4 then
+                    --Code de 6th sense
+                    if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                        G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                        G.E_MANAGER:add_event(Event({
+                            func = (function()
+                                SMODS.add_card {
+                                    set = "Spectral"
+                                }
+                            G.GAME.consumeable_buffer = 0
+                                return true
+                            end)}))
+                    end
                 end
-            end
+            end  
+        end
+        return total_dollars
     end
-    return total_dollars
-end
 }
