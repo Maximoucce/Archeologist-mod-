@@ -21,9 +21,8 @@ function EJ_load_previous_run()
     return jokers
 end
 
--- Sauvegarde ultra-sécurisée contre les tables invalides (nil)
+-- Sécurité pour les tables invalides (nil)
 function EJ_save_previous_run(joker_keys)
-    -- SÉCURITÉ : Si joker_keys est nil ou n'est pas une table, on crée une liste vide
     if type(joker_keys) ~= 'table' then
         joker_keys = {}
     end
@@ -35,15 +34,14 @@ end
 local EJ_old_update = Game.update
 local EJ_already_saved = false
 
+--Partie se déclenche à la défaite
 function Game:update(dt)
     EJ_old_update(self, dt)
 
     if G.STATE == G.STATES.GAME_OVER then
         if not EJ_already_saved then
-            -- 1. On prépare la table pour récolter les clés des jokers
             local current_jokers = {}
             
-            -- 2. On vérifie si la zone des jokers existe et contient des cartes
             if G.jokers and G.jokers.cards then
                 for _, card in ipairs(G.jokers.cards) do
                     if card.config.center and card.config.center.key then
@@ -52,7 +50,6 @@ function Game:update(dt)
                 end
             end
             
-            -- 3. On envoie la table récoltée à la fonction de sauvegarde !
             EJ_save_previous_run(current_jokers)
             print((love.filesystem.read("ej_previous_run.txt")))
             EJ_already_saved = true
@@ -61,8 +58,6 @@ function Game:update(dt)
         EJ_already_saved = false
     end
 end
-
---info générales du joker
 
 SMODS.Atlas {
     key = "ArchHDf",
@@ -87,7 +82,6 @@ SMODS.Joker {
     perishable_compat = true,
 
     locked_loc_vars = function(self, info_queue, card)
-        -- Injection sécurisée et recommandée du tooltip pour l'Excavation
         if G.P_CENTERS and G.P_CENTERS.c_maxarch_ExcTarot then
             info_queue[#info_queue + 1] = { 
                 key = 'c_maxarch_ExcTarot', 
@@ -95,8 +89,6 @@ SMODS.Joker {
             }
         end
 
-        -- On renvoie simplement une table vide pour les variables.
-        -- Steamodded va automatiquement aller chercher la clé 'unlock' du fichier de localisation !
         return { vars = {} }
     end,
 
@@ -104,7 +96,6 @@ SMODS.Joker {
         return false
     end,
 
-    -- Permet d'afficher proprement le tooltip du Joker copié ou l'incompatibilité
     loc_vars = function(self, info_queue, card)
         local position = nil
         if G.jokers and G.jokers.cards then
@@ -116,14 +107,11 @@ SMODS.Joker {
         local previous_run = EJ_load_previous_run()
         local target_key = (position and previous_run) and previous_run[position] or nil
         
-        -- CAS 1 : Incompatibilité (Archjoker tente de se copier lui-même)
         if target_key == self.key then
-            -- On passe simplement la clé maintenant qu'elle est enregistrée !
             info_queue[#info_queue+1] = { key = 'arch_incompat', set = 'Other' }
             return { vars = { "Incompatible" } }
         end
         
-        -- CAS 2 : Fonctionnement normal
         if target_key and G.P_CENTERS[target_key] then
             info_queue[#info_queue+1] = G.P_CENTERS[target_key]
             return { vars = { G.P_CENTERS[target_key].name } }
@@ -141,24 +129,19 @@ SMODS.Joker {
         local previous_run = EJ_load_previous_run()
         local target_key = (position and previous_run) and previous_run[position] or nil
 
-        -- On bloque strictement si la cible est un autre Archjoker pour éviter les crashs de boucle
         if target_key and target_key ~= self.key and G.P_CENTERS[target_key] then
             local target_center = G.P_CENTERS[target_key]
             
-            -- Initialisation de la mémoire des compteurs
             card.ability.persisted_states = card.ability.persisted_states or {}
             
-            -- 1. SAUVEGARDE de l'état d'origine
             local old_center = card.config.center
             local old_ability = card.ability
             
-            -- 2. CLONAGE DE SÉCURITÉ PROFOND
             local temp_ability = copy_table(old_ability)
             temp_ability.name = target_center.name
             temp_ability.set = target_center.set or 'Joker'
             temp_ability.effect = target_center.effect
             
-            -- Injection forcée de TOUTE la configuration d'origine du joker ciblé (Aide pour Misprint / To-Do List)
             if target_center.config then
                 for k, v in pairs(target_center.config) do
                     if type(v) == 'table' then
@@ -169,15 +152,12 @@ SMODS.Joker {
                 end
             end
             
-            -- 3. GESTION DE LA PERSISTANCE AVANCÉE (Compteurs et Objectifs dynamiques)
             if card.ability.persisted_states[target_key] then
                 temp_ability.extra = copy_table(card.ability.persisted_states[target_key])
-                -- Pour To Do List, on restaure aussi les variables volantes hors de 'extra' si elles existent
                 if card.ability.persisted_states[target_key .. '_to_do_target'] then
                     temp_ability.to_do_target = card.ability.persisted_states[target_key .. '_to_do_target']
                 end
             else
-                -- Premier chargement du Joker imité
                 if target_center.config and target_center.config.extra then
                     temp_ability.extra = copy_table(target_center.config.extra)
                 else
@@ -185,28 +165,22 @@ SMODS.Joker {
                 end
             end
             
-            -- 4. APPLICATION DU MASQUE
             card.config.center = target_center
             card.ability = temp_ability
             
-            -- On fait croire au jeu que c'est un Blueprint qui agit (comportement safe par défaut)
             local ctx = context
             ctx.blueprint = true
             ctx.blueprint_card = card
             
-            -- 5. CALCUL
             local ret = card:calculate_joker(ctx)
             
-            -- 6. SAUVEGARDE ET PERSISTANCE DU NOUVEL ÉTAT
             if card.ability.extra then
                 old_ability.persisted_states[target_key] = copy_table(card.ability.extra)
             end
-            -- Sauvegarde spécifique pour l'objectif de To Do List s'il a changé pendant le calcul
             if card.ability.to_do_target then
                 old_ability.persisted_states[target_key .. '_to_do_target'] = card.ability.to_do_target
             end
             
-            -- 7. RESTAURATION DE L'ARCHJOKER
             card.config.center = old_center
             card.ability = old_ability
             
