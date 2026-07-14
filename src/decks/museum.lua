@@ -1,6 +1,6 @@
 SMODS.Atlas {
     key = "Museum",
-    path = "Museetest.png",
+    path = "Museeidee.png",
     px = 71,
     py = 95
 }
