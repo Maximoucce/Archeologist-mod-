@@ -46,6 +46,14 @@ return {
                     "{C:green,s:1.1}#1# chance(s) sur #2#{} {C:default,s:1.1}de gagner{} {C:money,s:1.1}$#3#{}",
                     "sinon déclenche la {X:spectral,C:edition,E:1}Malédiction#4#du#4#Pharaon{}"
                 }
+            },
+            c_maxarch_DesTarot = {
+                name = "Désert",
+                text = {
+                    "Améliore {C:attention}#1#{}",
+                    "cartes sélectionnées en",
+                    "{C:attention}Carte Sableuse{}"
+                }
             }
         },
         Spectral = {
@@ -70,13 +78,13 @@ return {
             b_maxarch_Museum = {
                 name = "Jeu du Musée",
                 text = {
-                    "Après avoir battu une {C:attention}Blinde Boss{}, recevez :",
-                    "{C:money}$#2#{} par Joker {C:common}Commun{}",
-                    "{C:money}$#3#{} par Joker {C:uncommon}Peu Commun{}",
-                    "{C:money}$#4#{} par Joker {C:rare}Rare{}",
-                    "une {C:spectral,E:1}carte spectrale{}",
-                    "par Joker {C:legendary}Légendaire{}",
-                    "Pas d'{C:attention}intérêts{} ni de bonus de {C:blue}main restante{}"
+                    "Après avoir battu une {C:attention}Blinde Boss{} :",
+                    "{s:0.8}{C:money}$#2#{} par Joker {C:common}Commun{}",
+                    "{s:0.8}{C:money}$#3#{} par Joker {C:uncommon}Peu Commun{}",
+                    "{s:0.8}{C:money}$#4#{} par Joker {C:rare}Rare{}",
+                    "{s:0.8}une {C:spectral,E:1}carte spectrale{}",
+                    "{s:0.8}par Joker {C:legendary}Légendaire{}",
+                    "Ni {C:attention}intérêts{} ni bonus de {C:blue}main restante{}"
                 },
                 unlock = {
                     "Découvrez au moins",
