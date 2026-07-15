@@ -6,7 +6,7 @@ SMODS.Atlas {
 }
 
 SMODS.Sound({
-    key = "rockbreak",
+    key = "rocbrek",
     path = "rocbrek.ogg"
 })
 
@@ -19,8 +19,8 @@ end
 local e_sr = G.FUNCS.start_run
 G.FUNCS.start_run = function(e)
     e_sr(e)
-    if G.P_BLINDS and G.P_BLINDS['bl_maxarch_bossil'] then
-        G.P_BLINDS['bl_maxarch_bossil'].pos.y = 0
+    if G.P_BLINDS and G.P_BLINDS["bl_maxarch_bossil"] then
+        G.P_BLINDS["bl_maxarch_bossil"].pos.y = 0
     end
 end
 
@@ -37,14 +37,14 @@ SMODS.Blind {
     calc_dollar_bonus = function(self,card)
         if beatInOneHand() then
             attention_text({
-                text = localize("Broken !"), --------------O
+                text = localize("k_maxarch_brok"),
                 scale = 1,
                 hold = 1.3,
                 major = G.GAME.blind,
                 backdrop_colour = G.C.RED
             })
             --play_sound("glass2", 0.5, 1)
-            play_sound("rockbreak", 1, 1)
+            play_sound("maxarch_rocbrek", 1, 0.3)
             self.pos.y = 1
             G.GAME.blind.dollars = -15
             return G.GAME.blind.dollars, {

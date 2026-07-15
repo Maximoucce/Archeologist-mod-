@@ -22,9 +22,6 @@ return {
             brokeF = {
                 name = "Fossile Brisé",
             },
-            brokemsg = {
-                name = "Brisé !",
-            },
             maxarch_scarabs_seal = {
                 name = "Sceau Scarabée",
                 text = {
@@ -101,6 +98,17 @@ return {
                 }
             }
         },
+        Tag = {
+            tag_maxarch_peerR = {
+                name = "Révision par un Pair",
+                text = {
+                "Retrigger all",
+                "played cards",
+                "card {C:attention}held in",
+                "{C:attention}hand{} abilities"
+                }
+            }
+        },
         Mod = {
             MaxArchMod = {
                 name = "Mod Archéologue",
@@ -119,7 +127,13 @@ return {
     misc = {
         dictionary = {
             k_maxarch_exco = "Trésor !",
-            k_maxarch_excx = "Malédiction du Pharaon !"
+            k_maxarch_excx = "Malédiction du Pharaon !",
+            k_maxarch_brok = "Brisé !",
+
+            k_maxarch_none = "aucun",
+            k_maxarch_dawn = "aube",
+            k_maxarch_zenith = "zénith",
+            k_maxarch_dusk = "crépuscule"
         }
     }
 }

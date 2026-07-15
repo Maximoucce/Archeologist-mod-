@@ -44,23 +44,23 @@ SMODS.Seal {
 loc_vars = function(self, info_queue, card)
     -- On regarde les cartes actuellement sélectionnées dans la main
     local highlighted = G.hand and G.hand.highlighted or {}
-    local current_effect = "none"
+    local current_effect = localize("k_maxarch_none")
     if #highlighted == 0 then
-        current_effect = "none"
+        current_effect = localize("k_maxarch_none")
     end
     if #highlighted > 0 then
         if card == highlighted[1] then
-            current_effect = "dawn" -- Première position sélectionnée
+            current_effect = localize("k_maxarch_dawn") -- Première position sélectionnée
         elseif card == highlighted[#highlighted] then
-            current_effect = "dusk" -- Dernière position sélectionnée
+            current_effect = localize("k_maxarch_dusk") -- Dernière position sélectionnée
         else
-            current_effect = "zenith" -- Milieu sélectionné
+            current_effect = localize("k_maxarch_zenith") -- Milieu sélectionné
         end
     end
 
     return {
         vars = {
-            self.config.extra.mult, self.config.extra.dollars, self.config.extra.chips, current_effect, " ", self.config.extra.xmult ----------------O
+            self.config.extra.mult, self.config.extra.dollars, self.config.extra.chips, current_effect, " ", self.config.extra.xmult
         }
     }
 end,

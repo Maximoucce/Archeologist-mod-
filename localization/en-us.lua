@@ -22,9 +22,6 @@ return {
             brokeF = {
                 name = "Broken Fossil",
             },
-            brokemsg = {
-                name = "Broken !",
-            },
             maxarch_scarabs_seal = {
                 name = "Scarab Seal",
                 text = {
@@ -101,6 +98,17 @@ return {
                 }
             }
         },
+        Tag = {
+            tag_maxarch_peerR = {
+                name = "Peer Review",
+                text = {
+                "Retrigger all",
+                "played cards and",
+                "card {C:attention}held in",
+                "{C:attention}hand{} abilities"
+                }
+            }
+        },
         Mod = {
             MaxArchMod = {
                 name = "Archeologist Mod",
@@ -119,7 +127,14 @@ return {
     misc = {
         dictionary = {
             k_maxarch_exco = "Treasure !",
-            k_maxarch_excx = "Pharaoh's curse !"
+            k_maxarch_excx = "Pharaoh's curse !",
+            k_maxarch_brok = "Broken !",
+
+            k_maxarch_none = "none",
+            k_maxarch_dawn = "dawn",
+            k_maxarch_zenith = "zenith",
+            k_maxarch_dusk = "dusk"
+
         }
     }
 }
