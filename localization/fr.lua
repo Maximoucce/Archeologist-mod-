@@ -99,13 +99,13 @@ return {
             }
         },
         Tag = {
-            tag_maxarch_peerR = {
-                name = "Révision par un Pair",
+            tag_maxarch_PR = {
+                name = "Badge de Révision",
                 text = {
-                "Retrigger all",
-                "played cards",
-                "card {C:attention}held in",
-                "{C:attention}hand{} abilities"
+                "Déclenche à nouveau toutes les",
+                "cartes {C:attention}marquantes{} et",
+                "toutes les capacités des",
+                "{C:attention}cartes en main{}"
                 }
             }
         },

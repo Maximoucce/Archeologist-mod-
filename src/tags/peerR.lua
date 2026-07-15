@@ -1,6 +1,6 @@
 SMODS.Atlas{
     key = "PRimg",
-    path = "tagtest.png",
+    path = "tagline.png",
     px = 32,
     py = 32,
 }
