@@ -30,9 +30,9 @@ for _, file in ipairs(decks_src) do
     assert(SMODS.load_file("src/decks/" .. file))()
 end
 
-local skiptags_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/skiptags")
-for _, file in ipairs(skiptags_src) do
-    assert(SMODS.load_file("src/skiptags/" .. file))()
+local tags_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/tags")
+for _, file in ipairs(tags_src) do
+    assert(SMODS.load_file("src/tags/" .. file))()
 end
 
 local blinds_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/blinds")

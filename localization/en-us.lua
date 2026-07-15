@@ -99,11 +99,11 @@ return {
             }
         },
         Tag = {
-            tag_maxarch_peerR = {
+            tag_maxarch_PR = {
                 name = "Peer Review",
                 text = {
                 "Retrigger all",
-                "played cards and",
+                "{C:attention}played{} cards and",
                 "card {C:attention}held in",
                 "{C:attention}hand{} abilities"
                 }
