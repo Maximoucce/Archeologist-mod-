@@ -30,7 +30,7 @@ return {
                 text = {
                     "Effet varie avec la position de",
                     "la carte dans la main jouée :",
-                    "{X:dark_edition,C:white}Effet#5#actuel#5#:{} {C:attention}#4#{}",
+                    "{X:dark_edition,C:white}Effet#5#actuel#5#:{} {C:attention,s:1.1}#4#{}",
                     "{C:inactive,E:1}---------------------------------{}",
                     "{C:tarot}aube{} : {C:chips}+#3#{} Jetons et {C:mult}+#1#{} Mult si {C:attention}dernière{}",
                     "{C:gold}zénith{} : {C:money}+#2#${} si au {C:attention}milieu{}",
@@ -114,6 +114,12 @@ return {
                     "modding pour leur aide et leurs retours {C:purple}<3{}"
                 }
             }
+        }
+    },
+    misc = {
+        dictionary = {
+            k_maxarch_exco = "Trésor !",
+            k_maxarch_excx = "Malédiction du Pharaon !"
         }
     }
 }

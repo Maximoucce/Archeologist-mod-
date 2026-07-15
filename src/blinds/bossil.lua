@@ -5,6 +5,11 @@ SMODS.Atlas {
     py = 32
 }
 
+SMODS.Sound({
+    key = "rockbreak",
+    path = "rocbrek.ogg"
+})
+
 --Code du venant du Yahimod (opentolan)
 function beatInOneHand()
     return SMODS.last_hand_oneshot == true
@@ -32,13 +37,14 @@ SMODS.Blind {
     calc_dollar_bonus = function(self,card)
         if beatInOneHand() then
             attention_text({
-                text = "Broken !",
+                text = localize("Broken !"), --------------O
                 scale = 1,
                 hold = 1.3,
                 major = G.GAME.blind,
                 backdrop_colour = G.C.RED
             })
-            play_sound("glass2", 0.5, 1)
+            --play_sound("glass2", 0.5, 1)
+            play_sound("rockbreak", 1, 1)
             self.pos.y = 1
             G.GAME.blind.dollars = -15
             return G.GAME.blind.dollars, {

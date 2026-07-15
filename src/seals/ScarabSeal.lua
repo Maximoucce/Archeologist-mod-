@@ -60,7 +60,7 @@ loc_vars = function(self, info_queue, card)
 
     return {
         vars = {
-            self.config.extra.mult, self.config.extra.dollars, self.config.extra.chips, current_effect, " ", self.config.extra.xmult
+            self.config.extra.mult, self.config.extra.dollars, self.config.extra.chips, current_effect, " ", self.config.extra.xmult ----------------O
         }
     }
 end,

@@ -47,11 +47,11 @@ SMODS.Consumable {
             unlock_card(G.P_CENTERS[joker_key])
          end
 
-        if SMODS.pseudorandom_probability(card, "Excavation", 1, card.ability.extra.odds) then
+        if SMODS.pseudorandom_probability(card, "Excavation", 2, card.ability.extra.odds) then
             ease_dollars(card.ability.extra.dollars)
             play_sound("polychrome1", 1, 0.5)
             attention_text({
-                text = "Treasure !",
+                text = localize("k_maxarch_exco"),
                 scale = 1.3,
                 hold = 1.5,
                 major = card,
@@ -61,7 +61,7 @@ SMODS.Consumable {
         else
             play_sound("maxarch_PC", 1, 0.5)
             attention_text({
-                text = "Pharaoh's curse !",
+                text = localize("k_maxarch_excx"),
                 scale = 1.2,
                 hold = 1.5,
                 major = card,
