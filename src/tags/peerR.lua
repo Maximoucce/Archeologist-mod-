@@ -25,7 +25,7 @@ SMODS.Tag {
 
     apply = function(self, tag, context)
         if context.type == "round_start_bonus" then
-            tag:yep('+', G.C.EDITION, function()
+            tag:yep('+', G.C.FILTER, function()
                 G.GAME.maxarch_PR_tag.active = true
                 return true
             end)
@@ -35,10 +35,19 @@ SMODS.Tag {
     end
 }
 
+---SMODS.insert_repetitions = function(ret, eval, effect_card, _type)
+
+---bonus_repetitions = self.ability.perma_repetitions ~= 0 and self.ability.perma_repetitions or nil,'''
+
+
  --           G.hand:change_size(tag.config.h_size)
    --         G.GAME.round_resets.temp_handsize = (G.GAME.round_resets.temp_handsize or 0) + tag.config.h_size
      --       tag.triggered = true
        --     return true
+
+    --           if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[1] then
+     --       return {
+      --          repetitions = card.ability.extra.repetitions
 
 --        if context.repetition and context.cardarea == G.play then
 --            if context.other_card.seal == "yahimod_whatsapp_seal" then 

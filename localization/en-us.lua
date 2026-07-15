@@ -109,6 +109,14 @@ return {
                 }
             }
         },
+        Voucher = {
+            v_maxarch_test = {
+                name = "Coupon test",
+                text = {
+                    "testetstestet"
+                }
+            }
+        },
         Mod = {
             MaxArchMod = {
                 name = "Archeologist Mod",
