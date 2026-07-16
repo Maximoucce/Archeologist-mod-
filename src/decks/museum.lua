@@ -27,7 +27,7 @@ SMODS.Back {
 
     unlocked = false,
 
---Code de Black Deck
+--Code from Black Deck
     locked_loc_vars = function(self, info_queue, back)
         return { vars = { 150 } }
     end,
@@ -50,7 +50,7 @@ SMODS.Back {
                 elseif j.config.center.rarity == 3 then
                     total_dollars = total_dollars + (4*self.config.extra.dollars)
                 elseif j.config.center.rarity == 4 then
-                    --Code de 6th sense
+                    --Code from 6th sense
                     if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
                         G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
                         G.E_MANAGER:add_event(Event({

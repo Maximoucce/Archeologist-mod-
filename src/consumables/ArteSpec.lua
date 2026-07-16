@@ -39,7 +39,7 @@ SMODS.Consumable {
     }
     end,
 
--- Code modifié de l'application sceau doré pour l'effet
+-- Modified code of Golden Seal
     use = function(self, card, area, copier)
         local conv_card = G.hand.highlighted[1]
         G.E_MANAGER:add_event(Event({

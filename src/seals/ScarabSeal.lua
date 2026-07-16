@@ -14,7 +14,7 @@ SMODS.Seal {
     },
     badge_colour = HEX("0219AB"),
 
---Label pour le badge, sinon ça marche pas
+--Label for the badge, else doesn't work
     loc_txt = {
         ["en-us"] = {
                 label = "Scarab Seal"
@@ -24,7 +24,7 @@ SMODS.Seal {
         }
     },
 
--- Fonction pour ajouter les badges sous la carte (marche pas?)
+-- Function to add badges under the card (doesn't work?)
     set_badges = function(self, card, badges)
         badges[#badges + 1] = create_badge("Archeologist Mod", HEX("a07c46"), HEX("c8f8c6"), 1)
     end,
@@ -40,7 +40,7 @@ SMODS.Seal {
         }
     },
 
--- PARTIE TOOLTIP
+-- TOOLTIP
 loc_vars = function(self, info_queue, card)
     -- On regarde les cartes actuellement sélectionnées dans la main
     local highlighted = G.hand and G.hand.highlighted or {}
@@ -65,7 +65,7 @@ loc_vars = function(self, info_queue, card)
     }
 end,
 
--- PARTIE SCORING
+-- SCORING
 calculate = function(self, card, context)
     if context.cardarea == G.play and context.main_scoring then
         local scoring_hand = context.scoring_hand or {}
@@ -91,7 +91,7 @@ calculate = function(self, card, context)
     end
 end,
 
---Code du sceau doré pour les reflets
+--Code from the visual effect of Golden Seal
     draw = function(self, card, layer)
         if (layer == 'card' or layer == 'both') and card.sprite_facing == 'front' then
             G.shared_seals[card.seal].role.draw_major = card

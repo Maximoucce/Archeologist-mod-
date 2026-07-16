@@ -40,7 +40,7 @@ SMODS.Consumable {
 
     use = function(self, card, area, copier)
 
--- Déblocage de l'Archéologue
+-- Unlock Archeologist
         local joker_key = "j_maxarch_Archjoker"
 
         if G.P_CENTERS[joker_key] and not G.P_CENTERS[joker_key].unlocked then

@@ -1,4 +1,4 @@
--- Chargement avec cache
+-- Loads with cache
 function EJ_load_previous_run()
     if G.EJ_previous_run_cache then 
         return G.EJ_previous_run_cache 
@@ -21,20 +21,19 @@ function EJ_load_previous_run()
     return jokers
 end
 
--- Sécurité pour les tables invalides (nil)
+-- Security for invalid (nil) tables
 function EJ_save_previous_run(joker_keys)
     if type(joker_keys) ~= 'table' then
         joker_keys = {}
     end
 
     love.filesystem.write("ej_previous_run.txt", table.concat(joker_keys, ","))
-    G.EJ_previous_run_cache = nil -- Réinitialise le cache
+    G.EJ_previous_run_cache = nil -- Reset cache
 end
 
 local EJ_old_update = Game.update
 local EJ_already_saved = false
 
---Partie se déclenche à la défaite
 function Game:update(dt)
     EJ_old_update(self, dt)
 

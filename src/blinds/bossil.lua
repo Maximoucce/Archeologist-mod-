@@ -10,12 +10,12 @@ SMODS.Sound({
     path = "rocbrek.ogg"
 })
 
---Code du venant du Yahimod (opentolan)
+--Code from the Yahimod (opentolan) thanks a lot
 function beatInOneHand()
     return SMODS.last_hand_oneshot == true
 end
 
---Fonction pour réinitialiser le sprite
+--Sprite reset
 local e_sr = G.FUNCS.start_run
 G.FUNCS.start_run = function(e)
     e_sr(e)
