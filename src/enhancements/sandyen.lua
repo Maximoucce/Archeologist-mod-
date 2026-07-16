@@ -14,7 +14,7 @@ SMODS.Enhancement {
     },
 
     config = {
-        reduction = 3 -- Pourcentage de réduction
+        reduction = 5 -- Pourcentage de réduction
     },
 
     loc_vars = function(self, info_queue, card)
