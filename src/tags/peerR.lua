@@ -26,62 +26,51 @@ SMODS.Tag {
     apply = function(self, tag, context)
         if context.type == "round_start_bonus" then
             tag:yep('+', G.C.FILTER, function()
-                G.GAME.maxarch_PR_tag.active = true
+                G.GAME.maxarch_PR_tag_active = true
+                print("apply is true")
                 return true
             end)
             tag.triggered = true
             return true
         end
-    end
-}
-
----SMODS.insert_repetitions = function(ret, eval, effect_card, _type)
-
----bonus_repetitions = self.ability.perma_repetitions ~= 0 and self.ability.perma_repetitions or nil,'''
-
-
- --           G.hand:change_size(tag.config.h_size)
-   --         G.GAME.round_resets.temp_handsize = (G.GAME.round_resets.temp_handsize or 0) + tag.config.h_size
-     --       tag.triggered = true
-       --     return true
-
-    --           if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[1] then
-     --       return {
-      --          repetitions = card.ability.extra.repetitions
-
---        if context.repetition and context.cardarea == G.play then
---            if context.other_card.seal == "yahimod_whatsapp_seal" then 
---                    return {
---                        message = localize("k_again_ex"),
---                        repetitions = 2,
---                        card = card,
-
-
-local card_calculate_repetition_ref = Card.calculate_repetition
-function Card.calculate_repetition(self, context)
-    local r = card_calculate_repetition_ref(self, context)
-    
-    if G.GAME.maxarch_PR_tag.active then
-        print(testtesteststtet)
-        if context.cardarea == G.play or context.cardarea == G.hand then
-            if r then
-                r.repetitions = (r.repetitions or 0) + 1
-            else
-                r = {
-                    repetitions = 1,
-                    card = self,
-                    message = localize('k_again_ex')
-                }
+        if (G.GAME.maxarch_PR_tag_active == true) then
+            print("detection works")
+            if context.repetition then
+                if context.repetition and context.cardarea == G.hand and (next(context.card_effects[1]) or #context.card_effects > 1) then
+                    print("hand rep")
+                    return {
+                        repetitions = self.config.extra.repetitions
+                    }
+                end
+                if context.repetition and context.cardarea == G.play then
+                    print("scored rep")
+                    return {
+                        repetitions = self.config.extra.repetitions
+                    }
+                end
+            end
+            if context.blind_defeated then
+                print("tag is over")
+                G.GAME.maxarch_PR_tag_active = false
             end
         end
-    end
-    
-    return r
-end
+    end,
+}
 
--- Désactivation (optionnel ?)
-local end_round_ref = end_round
-function end_round()
-    G.GAME.PR_tag_active = false
-    return end_round_ref()
+-- Hook
+SMODS.current_mod.calculate = function(self, context)
+    if not G.GAME.maxarch_PR_tag_active then return end
+
+    if context.repetition then
+        if context.cardarea == G.hand and (next(context.card_effects[1]) or #context.card_effects > 1) then
+            return { repetitions = PR_config.extra.repetitions }
+        end
+        if context.cardarea == G.play then
+            return { repetitions = PR_config.extra.repetitions }
+        end
+    end
+
+    if context.blind_defeated then
+        G.GAME.maxarch_PR_tag_active = false
+    end
 end
