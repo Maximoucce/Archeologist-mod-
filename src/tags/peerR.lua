@@ -27,35 +27,15 @@ SMODS.Tag {
         if context.type == "round_start_bonus" then
             tag:yep('+', G.C.FILTER, function()
                 G.GAME.maxarch_PR_tag_active = true
-                print("apply is true")
                 return true
             end)
             tag.triggered = true
             return true
         end
-        if (G.GAME.maxarch_PR_tag_active == true) then
-            print("detection works")
-            if context.repetition then
-                if context.repetition and context.cardarea == G.hand and (next(context.card_effects[1]) or #context.card_effects > 1) then
-                    print("hand rep")
-                    return {
-                        repetitions = self.config.extra.repetitions
-                    }
-                end
-                if context.repetition and context.cardarea == G.play then
-                    print("scored rep")
-                    return {
-                        repetitions = self.config.extra.repetitions
-                    }
-                end
-            end
-            if context.blind_defeated then
-                print("tag is over")
-                G.GAME.maxarch_PR_tag_active = false
-            end
-        end
-    end,
+    end
 }
+
+local PR_config = { extra = { repetitions = 1 } }
 
 -- Hook
 SMODS.current_mod.calculate = function(self, context)
@@ -63,13 +43,18 @@ SMODS.current_mod.calculate = function(self, context)
 
     if context.repetition then
         if context.cardarea == G.hand and (next(context.card_effects[1]) or #context.card_effects > 1) then
-            return { repetitions = PR_config.extra.repetitions }
+            return {
+                repetitions = PR_config.extra.repetitions,
+                card = context.other_card
+            }
         end
         if context.cardarea == G.play then
-            return { repetitions = PR_config.extra.repetitions }
+            return {
+                repetitions = PR_config.extra.repetitions,
+                card = context.other_card
+            }
         end
     end
-
     if context.blind_defeated then
         G.GAME.maxarch_PR_tag_active = false
     end

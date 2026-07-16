@@ -1,4 +1,4 @@
 --https://github.com/Steamodded/smods/wiki/SMODS.Voucher
 --lvl 1 : chance de ne pas utiliser les consommables (1/10) ou redonner
---lvl 2 : 
+--lvl 2 : ?
 --déblocage avec le nombre de consommables utilisés ? sur une seule run ?
