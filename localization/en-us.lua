@@ -127,7 +127,8 @@ return {
                     "{C:mult}when paired with complex modded jokers{}",
                     "Thank you {C:chips}@theAstra_{} for the youtube tutorials",
                     "on how to make Balatro mods, and the Balatro",
-                    "modding community for their help and feeback {C:purple}<3{}"
+                    "modding and pixel art communities for their help and feeback",
+                    "{C:purple}<3{}"
                 }
             }
         }

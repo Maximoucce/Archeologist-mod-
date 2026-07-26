@@ -15,15 +15,6 @@ function beatInOneHand()
     return SMODS.last_hand_oneshot == true
 end
 
---Sprite reset
-local e_sr = G.FUNCS.start_run
-G.FUNCS.start_run = function(e)
-    e_sr(e)
-    if G.P_BLINDS and G.P_BLINDS["bl_maxarch_bossil"] then
-        G.P_BLINDS["bl_maxarch_bossil"].pos.y = 0
-    end
-end
-
 SMODS.Blind {
     key = "bossil",
     atlas = "bossilimg",
@@ -33,6 +24,10 @@ SMODS.Blind {
     boss = { min = 2 },
     dollars = 5,
     discovered = false,
+
+    set_blind = function(self, blind, reset)
+        self.pos.y = 0
+    end,
 
     calc_dollar_bonus = function(self,card)
         if beatInOneHand() then

@@ -119,7 +119,8 @@ return {
                     "{C:mult}si associé à des jokers moddés complexes{}",
                     "Merci {C:chips}@theAstra_{} pour les tutoriels youtube",
                     "pour faire des mods Balatro, et la communauté de",
-                    "modding pour leur aide et leurs retours {C:purple}<3{}"
+                    "modding et de pixel art Balatro pour leur aide et leurs retours",
+                    "{C:legendary}<3{}"
                 }
             }
         }
