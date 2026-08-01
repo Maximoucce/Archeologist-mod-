@@ -59,15 +59,15 @@ function Game:update(dt)
 end
 
 SMODS.Atlas {
-    key = "ArchHDf",
-    path = "ArchHDf.png",
+    key = "ArchHDfC",
+    path = "ArchHDfC.png",
     px = 71,
     py = 95
 }
 
 SMODS.Joker {
     key = "Archjoker",
-    atlas = "ArchHDf",
+    atlas = "ArchHDfC",
     pos = {
         x = 0,
         y = 0
@@ -79,6 +79,11 @@ SMODS.Joker {
     discovered = false,
     eternal_compat = true,
     perishable_compat = true,
+    config = {
+        extra = {
+            art = "standard"
+        }
+    },
 
     locked_loc_vars = function(self, info_queue, card)
         if G.P_CENTERS and G.P_CENTERS.c_maxarch_ExcTarot then
@@ -187,6 +192,18 @@ SMODS.Joker {
                 ret.card = card
                 return ret
             end
+        end
+    end,
+
+    --Code from Fusion Jokers (Club Wizard)
+	update = function(self, card, dt)
+        if not self.discovered and not card.bypass_discovery_center then return end
+        if MaxArchMod.archconfig.arch_alt_art and card.ability.extra.art ~= "alt" then
+            card.children.center:set_sprite_pos({ x = 1, y = 0})
+            card.ability.extra.art = "alt"
+        elseif not MaxArchMod.archconfig.arch_alt_art and card.ability.extra.art ~= "standard" then
+            card.children.center:set_sprite_pos({ x = 0, y = 0})
+            card.ability.extra.art = "standard"
         end
     end
 }

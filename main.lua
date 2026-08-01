@@ -5,6 +5,10 @@ SMODS.Atlas {
     py = 34
 }
 
+MaxArchMod = SMODS.current_mod
+MaxArchMod.archconfig = SMODS.current_mod.config
+SMODS.load_file("configui.lua")()
+
 local consumables_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/consumables")
 for _, file in ipairs(consumables_src) do
     assert(SMODS.load_file("src/consumables/" .. file))()
