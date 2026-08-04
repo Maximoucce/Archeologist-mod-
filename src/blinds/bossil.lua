@@ -30,7 +30,7 @@ SMODS.Blind {
     end,
 
     calc_dollar_bonus = function(self,card)
-        if beatInOneHand() then
+        if beatInOneHand() and not G.GAME.blind.disabled then
             attention_text({
                 text = localize("k_maxarch_brok"),
                 scale = 1,
