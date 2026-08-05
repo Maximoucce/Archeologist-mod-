@@ -14,7 +14,7 @@ SMODS.Enhancement {
     },
 
     config = {
-        reduction = 5 -- Reduction percentage
+        reduction = 0.95 -- Reduction percentage
     },
 
     loc_vars = function(self, info_queue, card)
@@ -24,7 +24,7 @@ SMODS.Enhancement {
     calculate = function(self, card, context)
         if context.cardarea == G.play and context.main_scoring then
             return {
-                xblindsize = (100 - self.config.reduction) / 100,
+                xblindsize = self.config.reduction,
             }
         end
     end

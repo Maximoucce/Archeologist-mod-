@@ -9,6 +9,25 @@ return {
                     "{s:0.9,C:attention}Archeologist {s:0.9}excluded"
                 },
                 unlock = {"Use {C:attention}1{} {C:tarot,T:c_maxarch_ExcTarot,E:1}Excavation{} card"}
+            },
+            j_maxarch_Sandjoker = {
+                name = "Sand Joker",
+                text = {
+                    "Gives {B:1,C:white}X#1#{} blind size",
+                    "for each {C:attention}Sandy Card",
+                    "in your {C:attention}full deck",
+                    "{C:inactive}(Currently {B:1,C:white}X#2#{C:inactive})",
+                },
+            },
+            j_maxarch_Brushjoker = {
+                name = "Brush",
+                text = {
+                    "If {C:attention}first hand{} of round is",
+                    "a single {C:attention}Sandy Card{}, remove",
+                    "the sand and turn it into a",
+                    "{C:dark_edition,E:1}new enhanced card{}",
+                    "{C:inactive}({C:attention}#1#{C:inactive} remaining)",
+                }
             }
         },
         Other = {
@@ -67,7 +86,7 @@ return {
             m_maxarch_sanddd = {
                 name = "Sandy Card",
                 text = {
-                    "{V:1}-#1#%{} blind size"
+                    "{B:1,C:white}X#1#{} blind size"
                 }
             }
         },

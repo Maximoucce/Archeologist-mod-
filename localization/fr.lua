@@ -9,6 +9,25 @@ return {
                     "{s:0.9,C:attention}Archéologue {s:0.9}exclu"
                 },
                 unlock = {"Utiliser {C:attention}1{} carte {C:tarot,T:c_maxarch_ExcTarot,E:1}Excavation{}"}
+            },
+            j_maxarch_Sandjoker = {
+                name = "Joker de sable",
+                text = {
+                    "Octroie {B:1,C:white}X#1#{} taille de blinde",
+                    "pour chaque {C:attention}Carte Sableuse",
+                    "dans votre {C:attention}jeu complet",
+                    "{C:inactive}(Actuellement : {B:1,C:white}X#2#{C:inactive})",
+                },
+            },
+            j_maxarch_Brushjoker = {
+                name = "Pinceau",
+                text = {
+                    "Si la {C:attention}première main{} de la manche",
+                    "est une seule {C:attention}Carte Sableuse{},",
+                    "enlève le sable et la transforme en",
+                    "{C:dark_edition,E:1}nouvelle carte améliorée{}",
+                    "{C:inactive}({C:attention}#1#{C:inactive} restantes)"
+                }
             }
         },
         Other = {
@@ -67,7 +86,7 @@ return {
             m_maxarch_sanddd = {
                 name = "Carte Sableuse",
                 text = {
-                    "{V:1}-#1#%{} taille de blinde"
+                    "{B:1,C:white}X#1#{} taille de blinde"
                 }
             }
         },
