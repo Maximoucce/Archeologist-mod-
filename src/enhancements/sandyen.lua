@@ -18,13 +18,13 @@ SMODS.Enhancement {
     },
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { self.config.reduction, colours = { HEX("000000") } } }
+        return { vars = { card.ability.reduction, colours = { HEX("000000") } } }
     end,
 
     calculate = function(self, card, context)
         if context.cardarea == G.play and context.main_scoring then
             return {
-                xblindsize = self.config.reduction,
+                xblindsize = card.ability.reduction,
             }
         end
     end

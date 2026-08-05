@@ -23,7 +23,8 @@ SMODS.Joker {
 
     config = {
         extra = {
-            xblindsize = 0.02
+            xblindsize = 0.02,
+            art = "standard"
         }
     },
     

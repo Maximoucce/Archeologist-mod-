@@ -1,6 +1,7 @@
 SMODS.Atlas {
     key = "Brushjoker",
     path = "Brushjoker.png",
+    --Brush is from the Faithful java 64x texture pack for Minecraft (https://faithfulpack.net)
     px = 71,
     py = 95
 }
@@ -20,7 +21,7 @@ SMODS.Joker {
 
     rarity = 1,
     cost = 5,
-    blueprint_compat = true,
+    blueprint_compat = false,
     unlocked = true,
     discovered = false,
     eternal_compat = false,
@@ -28,7 +29,8 @@ SMODS.Joker {
 
     config = {
         extra = {
-            uses = 5
+            uses = 5,
+            art = "standard"
         }
     },
 
@@ -36,13 +38,13 @@ SMODS.Joker {
         info_queue[#info_queue + 1] = G.P_CENTERS.m_maxarch_sanddd
         return {
             vars = {
-                self.config.extra.uses
+                card.ability.extra.uses
             }
         }
     end,
 
     calculate = function(self, card, context)
-        if self.config.extra.uses > 0 then
+        if card.ability.extra.uses > 0 then
             if context.first_hand_drawn and not context.blueprint then
                 local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
                 juice_card_until(card, eval, true)
@@ -57,21 +59,26 @@ SMODS.Joker {
                     local random_seal = SMODS.poll_seal({ guaranteed = true })
                     --poll_seal(key, mod, no_negative, guaranteed, options)
 
-                    target_card:set_ability(G.P_CENTERS[random_enhancement])
-                    --set_ability(center, initial(optionnal), delay_sprites)
-                    target_card:set_edition(random_edition, true)
-                    --set_edition(edition, immediate, silent, delay)
-                    target_card:set_seal(random_seal, true)
-                    --set_seal(seal, immediate, silent)
-
-                    play_sound("maxarch_brush", 1, 1)
-                    target_card:juice_up()
-                    
+                    G.E_MANAGER:add_event(Event({
+                        play_sound("maxarch_brush", 1, 0.5),
+                        trigger = "after",
+                        delay = 0.5,
+                        func = function()
+                            target_card:set_ability(G.P_CENTERS[random_enhancement])
+                            --set_ability(center, initial(optionnal), delay_sprites)
+                            target_card:set_edition(random_edition, true)
+                            --set_edition(edition, immediate, silent, delay)
+                            target_card:set_seal(random_seal, true)
+                            --set_seal(seal, immediate, silent)
+                            target_card:juice_up()
+                            return true
+                        end
+                    }))
 
                     --Code from Perishable sticker
-                    if self.config.extra.uses > 0 then
-                        if self.config.extra.uses == 1 then
-                            self.config.extra.uses = 0
+                    if card.ability.extra.uses > 0 then
+                        if card.ability.extra.uses == 1 then
+                            card.ability.extra.uses = 0
                             return {
                                 message = localize('k_disabled_ex'),
                                 colour = G.C.FILTER,
@@ -81,9 +88,9 @@ SMODS.Joker {
                                 end
                             }
                         else
-                            self.config.extra.uses = self.config.extra.uses - 1
+                            card.ability.extra.uses = card.ability.extra.uses - 1
                             return {
-                                message = localize { type = 'variable', key = 'a_remaining', vars = { self.config.extra.uses } },
+                                message = localize { type = 'variable', key = 'a_remaining', vars = { card.ability.extra.uses } },
                                 colour = G.C.FILTER,
                                 delay = 0.45
                             }
