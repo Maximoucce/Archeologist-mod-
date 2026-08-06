@@ -13,7 +13,7 @@ return {
             j_maxarch_Sandjoker = {
                 name = "Joker de sable",
                 text = {
-                    "Octroie {B:1,C:white}X#1#{} taille de blinde",
+                    "Réduit la taille de blinde de {B:1,C:white}X#1#{}",
                     "pour chaque {C:attention}Carte Sableuse",
                     "dans votre {C:attention}jeu complet",
                     "{C:inactive}(Actuellement : {B:1,C:white}X#2#{C:inactive})",

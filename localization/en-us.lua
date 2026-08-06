@@ -13,7 +13,7 @@ return {
             j_maxarch_Sandjoker = {
                 name = "Sand Joker",
                 text = {
-                    "Gives {B:1,C:white}X#1#{} blind size",
+                    "Reduce blind size by {B:1,C:white}X#1#{}",
                     "for each {C:attention}Sandy Card",
                     "in your {C:attention}full deck",
                     "{C:inactive}(Currently {B:1,C:white}X#2#{C:inactive})",
