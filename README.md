@@ -3,7 +3,7 @@ This mod is a test, and adds:
 **New :**
 * **Jokers:
   * Archeologist --> same effect as blueprint but for cards that were at his place last run (*/!\ can be buggy with some jokers*)
-  * Brush --> when first hand is a single Sandy card, remove the sand and turn it into a new enhanced card (*enhanced + seal + edition)
+  * Brush --> when first hand is a single Sandy card, remove the sand and turn it into a new enhanced card (*enhanced + seal + edition*)
   * Sandy joker --> - X0.02 blind size for each sandy card in your full deck (base X1)
 * **Enhancement:** Sandy --> X0.95 blind size when card is scored
 * **Tarots:**
