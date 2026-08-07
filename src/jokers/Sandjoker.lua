@@ -39,7 +39,8 @@ SMODS.Joker {
         return { vars = {
             card.ability.extra.xblindsize,
             1 - card.ability.extra.xblindsize * sandy_tally,
-            colours = {HEX("000000")}
+            colours = {G.C.DYN_UI.DARK},
+            sandy_tally
             }
         }
     end,
@@ -52,6 +53,7 @@ SMODS.Joker {
             end
             return {
                 xblindsize = 1 - card.ability.extra.xblindsize * sandy_tally,
+                sandy_tally
             }
         end
     end,

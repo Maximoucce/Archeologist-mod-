@@ -29,7 +29,7 @@ SMODS.Joker {
 
     config = {
         extra = {
-            uses = 5,
+            uses = 4,
             art = "standard"
         }
     },

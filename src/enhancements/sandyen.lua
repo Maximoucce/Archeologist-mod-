@@ -18,7 +18,7 @@ SMODS.Enhancement {
     },
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.reduction, colours = { HEX("000000") } } }
+        return { vars = { card.ability.reduction, colours = {G.C.DYN_UI.DARK} } }
     end,
 
     calculate = function(self, card, context)

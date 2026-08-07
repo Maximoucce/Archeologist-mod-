@@ -43,3 +43,10 @@ local blinds_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/bl
 for _, file in ipairs(blinds_src) do
     assert(SMODS.load_file("src/blinds/" .. file))()
 end
+
+local vouchers_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/vouchers")
+for _, file in ipairs(vouchers_src) do
+    assert(SMODS.load_file("src/vouchers/" .. file))()
+end
+
+SMODS.load_file("src/joker_display.lua")()
