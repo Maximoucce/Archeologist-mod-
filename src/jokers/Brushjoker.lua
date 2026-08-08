@@ -74,6 +74,7 @@ SMODS.Joker {
                             return true
                         end
                     }))
+                    delay(0.4)
 
                     --Code from Perishable sticker
                     if card.ability.extra.uses > 0 then

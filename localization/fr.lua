@@ -128,6 +128,26 @@ return {
                 }
             }
         },
+        Voucher = {
+            v_maxarch_shovelvoucher = {
+                name = "Pelle",
+                text = {
+                    "Octroie {C:money}$1{} par carte jouée",
+                    "si {C:attention}50%{} du jeu a été pioché",
+                    "{C:inactive}(<#3#/#1# requis){}"
+                }
+            },
+            v_maxarch_excavatorvoucher = {
+                name = "Pelleteuse",
+                text = {
+                    "Octroie de manière",
+                    "permanente {C:red}+#5#{} défausse",
+                    "Octroie {C:money}$1{} par carte jouée",
+                    "si {C:attention}75%{} du jeu a été pioché",
+                    "{C:inactive}(<#4#/#1# requis){}"
+                }
+            }
+        },
         Mod = {
             MaxArchMod = {
                 name = "Mod Archéologue",

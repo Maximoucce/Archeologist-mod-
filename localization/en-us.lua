@@ -129,10 +129,23 @@ return {
             }
         },
         Voucher = {
-            v_maxarch_test = {
-                name = "Coupon test",
+            v_maxarch_shovelvoucher = {
+                name = "Shovel",
                 text = {
-                    "testetstestet"
+                    "Grants {C:money}$1{} per card played",
+                    "if {C:attention}50%{} of the deck",
+                    "has been drawn",
+                    "{C:inactive}(<#3#/#1# required){}"
+                }
+            },
+            v_maxarch_excavatorvoucher = {
+                name = "Excavator",
+                text = {
+                    "Permanently gain {C:red}+#5#{} discard",
+                    "Grants {C:money}$1{} per card played",
+                    "if {C:attention}75%{} of the deck",
+                    "has been drawn",
+                    "{C:inactive}(<#4#/#1# required){}"
                 }
             }
         },
