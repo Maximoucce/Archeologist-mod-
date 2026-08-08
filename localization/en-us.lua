@@ -135,7 +135,7 @@ return {
                     "Grants {C:money}$1{} per card played",
                     "if {C:attention}50%{} of the deck",
                     "has been drawn",
-                    "{C:inactive}(<#3#/#1# required){}"
+                    "{C:inactive}(#3#/#1# required){}"
                 }
             },
             v_maxarch_excavatorvoucher = {
@@ -145,7 +145,7 @@ return {
                     "Grants {C:money}$1{} per card played",
                     "if {C:attention}75%{} of the deck",
                     "has been drawn",
-                    "{C:inactive}(<#4#/#1# required){}"
+                    "{C:inactive}(#4#/#1# required){}"
                 }
             }
         },

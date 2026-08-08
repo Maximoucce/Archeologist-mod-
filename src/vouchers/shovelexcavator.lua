@@ -1,6 +1,6 @@
 SMODS.Atlas {
     key = "voucherstest",
-    path = "voucherstest3soul+w.png",
+    path = "voucherstest3soul+wsale1.png",
     px = 71,
     py = 95
 }

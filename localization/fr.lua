@@ -134,7 +134,7 @@ return {
                 text = {
                     "Octroie {C:money}$1{} par carte jouée",
                     "si {C:attention}50%{} du jeu a été pioché",
-                    "{C:inactive}(<#3#/#1# requis){}"
+                    "{C:inactive}(#3#/#1# requis){}"
                 }
             },
             v_maxarch_excavatorvoucher = {
@@ -144,7 +144,7 @@ return {
                     "permanente {C:red}+#5#{} défausse",
                     "Octroie {C:money}$1{} par carte jouée",
                     "si {C:attention}75%{} du jeu a été pioché",
-                    "{C:inactive}(<#4#/#1# requis){}"
+                    "{C:inactive}(#4#/#1# requis){}"
                 }
             }
         },
