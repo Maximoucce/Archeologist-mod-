@@ -146,7 +146,12 @@ return {
                     "if {C:attention}75%{} of the deck",
                     "has been drawn",
                     "{C:inactive}(#4#/#1# required){}"
-                }
+                },
+                unlock = {
+                    "Redeem {C:voucher}Shovel{}",
+                    "{C:attention}#1#{} total times",
+                    "{C:inactive}(#2#)",
+                },
             }
         },
         Mod = {

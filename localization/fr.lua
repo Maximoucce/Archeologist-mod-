@@ -145,7 +145,12 @@ return {
                     "Octroie {C:money}$1{} par carte jouée",
                     "si {C:attention}75%{} du jeu a été pioché",
                     "{C:inactive}(#4#/#1# requis){}"
-                }
+                },
+                unlock = {
+                    "Utilisez la {C:voucher}Pelle{}",
+                    "{C:attention}#1#{} fois au total",
+                    "{C:inactive}(#2#)",
+                },
             }
         },
         Mod = {

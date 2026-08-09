@@ -103,6 +103,16 @@ SMODS.Joker {
             card:set_debuff(true)
         end
     end,
+
+    in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, "m_maxarch_sanddd") then
+                return true
+            end
+        end
+        return false
+    end,
+
     --Code from Fusion Jokers (Club Wizard)
 	update = function(self, card, dt)
         if not self.discovered and not card.bypass_discovery_center then return end

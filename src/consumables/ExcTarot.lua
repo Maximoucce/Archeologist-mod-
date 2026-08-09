@@ -1,6 +1,6 @@
 SMODS.Atlas {
     key = "ExcImage",
-    path = "ExcHDred2.png",
+    path = "ExcHDred3.png",
     px = 71,
     py = 95
 }
@@ -10,7 +10,7 @@ SMODS.Sound({
     path = "PC.ogg"
 })
 
-SMODS.Consumable {
+SMODS.Consumable {    --rework needed
     key = "ExcTarot",
     atlas = "ExcImage",
     pos = {
@@ -83,5 +83,18 @@ SMODS.Consumable {
 
     in_pool = function(self, args)
         return true
+    end,
+
+	update = function(self, card, dt)
+        if not self.discovered and not card.bypass_discovery_center then return end
+        if card.children and card.children.center then
+            if G.GAME.used_vouchers["v_maxarch_excavatorvoucher"] then
+                card.children.center:set_sprite_pos({ x = 2, y = 0})
+            elseif G.GAME.used_vouchers["v_maxarch_shovelvoucher"] then
+                card.children.center:set_sprite_pos({ x = 1, y = 0})
+            else
+                card.children.center:set_sprite_pos({ x = 0, y = 0})
+            end
+        end
     end
 }

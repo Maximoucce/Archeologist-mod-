@@ -1,6 +1,6 @@
 SMODS.Atlas {
     key = "voucherstest",
-    path = "voucherstest3soul+wsale1.png",
+    path = "voucherstest3soul+wsale3.png",
     px = 71,
     py = 95
 }
@@ -13,8 +13,8 @@ SMODS.Voucher {
         x = 0,
         y = 0
     },
-    discovered = "false",
-    unlocked = "true",
+    discovered = false,
+    unlocked = true,
     cost = 10,
 
     loc_vars = function(self, info_queue, card)
@@ -76,8 +76,8 @@ SMODS.Voucher {
         y = 0
     },
     requires = {"v_maxarch_shovelvoucher"},
-    discovered = "false",
-    unlocked = "true",
+    discovered = false,
+    unlocked = false,
     cost = 10,
 
     config = {
@@ -85,6 +85,20 @@ SMODS.Voucher {
             discards = 1
         }
     },
+
+    --Code from Antimatter
+    locked_loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                5,
+            G.PROFILES[G.SETTINGS.profile].voucher_usage.v_maxarch_shovelvoucher and G.PROFILES[G.SETTINGS.profile].voucher_usage.v_maxarch_shovelvoucher.count or 0
+            }
+        }
+    end,
+    check_for_unlock = function(self, args)
+        return args.type == "maxarch_shovelvoucher_redeems" and G.PROFILES[G.SETTINGS.profile].voucher_usage["v_maxarch_shovelvoucher"] and
+            G.PROFILES[G.SETTINGS.profile].voucher_usage["v_maxarch_shovelvoucher"].count >= 5
+    end,
 
     loc_vars = function(self, info_queue, card)
         local totcards = (G.playing_cards and #G.playing_cards or 52)
