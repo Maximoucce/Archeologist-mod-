@@ -5,12 +5,17 @@ SMODS.Atlas {
     py = 95
 }
 
+function forceGameover()
+    G.STATE = G.STATES.GAME_OVER
+    G.STATE_COMPLETE = false
+end
+
 SMODS.Sound({
     key = "PC",
     path = "PC.ogg"
 })
 
-SMODS.Consumable {    --rework needed
+SMODS.Consumable {
     key = "ExcTarot",
     atlas = "ExcImage",
     pos = {
@@ -40,14 +45,6 @@ SMODS.Consumable {    --rework needed
     end,
 
     use = function(self, card, area, copier)
-
--- Unlock Archeologist
-        local joker_key = "j_maxarch_Archjoker"
-
-        if G.P_CENTERS[joker_key] and not G.P_CENTERS[joker_key].unlocked then
-            unlock_card(G.P_CENTERS[joker_key])
-         end
-
         if SMODS.pseudorandom_probability(card, "Excavation", 2, card.ability.extra.odds) then
             ease_dollars(card.ability.extra.dollars)
             play_sound("polychrome1", 1, 0.5)
@@ -60,7 +57,7 @@ SMODS.Consumable {    --rework needed
                 card:juice_up(0.3, 0.5)
             })
         else
-            play_sound("maxarch_PC", 1, 0.5)
+            play_sound("maxarch_PC", 1, 0.25)
             attention_text({
                 text = localize("k_maxarch_excx"),
                 scale = 1.2,
@@ -69,14 +66,17 @@ SMODS.Consumable {    --rework needed
                 backdrop_colour = G.C.MULT,
                 card:juice_up(0.3, 0.5)
             })
-            
+            --ease_dollars(-999999)
+            --G.GAME.current_round.hands_left = 0
+            --G.GAME.current_round.discards_left = 0
+            --G.GAME.round_resets.hands = 0
+            --G.GAME.round_resets.discards = 0
+            --G.GAME.blind.chips = 1e300
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
-                delay = 5,
+                delay = 3,
                 func = function()
-                    G.STATE = G.STATES.GAME_OVER
-                    G.STATE_COMPLETE = false
-                    return true
+                    forceGameover()
                 end
             }))
         end

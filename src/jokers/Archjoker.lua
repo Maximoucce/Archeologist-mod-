@@ -85,18 +85,14 @@ SMODS.Joker {
         }
     },
 
-    locked_loc_vars = function(self, info_queue, card)
-        if G.P_CENTERS and G.P_CENTERS.c_maxarch_ExcTarot then
-            info_queue[#info_queue + 1] = { 
-                key = 'c_maxarch_ExcTarot', 
-                set = 'Tarot' 
-            }
-        end
-
-        return { vars = {} }
-    end,
-
     check_for_unlock = function(self, args)
+        if args.type == "use_consumeable" and args.card and args.card.key == "c_maxarch_ExcTarot" then
+            return true
+        end
+        local profile = G.PROFILES[G.SETTINGS.profile]
+        if profile and profile.consumeable_usage and profile.consumeable_usage["c_maxarch_ExcTarot"] then
+            return profile.consumeable_usage["c_maxarch_ExcTarot"].count >= 1
+        end
         return false
     end,
 
