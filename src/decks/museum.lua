@@ -21,13 +21,13 @@ SMODS.Back {
     },
 
     apply = function(self, back)
-        G.GAME.modifiers.money_per_hand = 0
+        G.GAME.modifiers.money_per_hand = 1
         G.GAME.modifiers.no_interest = true
     end,
 
     unlocked = false,
 
---Code from Black Deck
+    --Code from Black Deck
     locked_loc_vars = function(self, info_queue, back)
         return { vars = { 150 } }
     end,
@@ -36,7 +36,7 @@ SMODS.Back {
     end,
 
     loc_vars = function(self, info_queue, back)
-        return { vars = { self.config.extra.dollars, 1, 2, 4 } }
+        return { vars = { self.config.extra.dollars, 1, 3, 5 } }
     end,
 
     calc_dollar_bonus = function(self, card)
@@ -46,9 +46,9 @@ SMODS.Back {
                 if j.config.center.rarity == 1 then
                     total_dollars = total_dollars + (1*self.config.extra.dollars)
                 elseif j.config.center.rarity == 2 then
-                    total_dollars = total_dollars + (2*self.config.extra.dollars)
+                    total_dollars = total_dollars + (3*self.config.extra.dollars)
                 elseif j.config.center.rarity == 3 then
-                    total_dollars = total_dollars + (4*self.config.extra.dollars)
+                    total_dollars = total_dollars + (5*self.config.extra.dollars)
                 elseif j.config.center.rarity == 4 then
                     --Code from 6th sense
                     if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then

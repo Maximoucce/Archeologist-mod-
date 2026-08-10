@@ -94,13 +94,12 @@ return {
             b_maxarch_Museum = {
                 name = "Jeu du Musée",
                 text = {
-                    "Après avoir battu une {C:attention}Blinde Boss{} :",
-                    "{s:0.8}{C:money}$#2#{} par Joker {C:common}Commun{}",
-                    "{s:0.8}{C:money}$#3#{} par Joker {C:uncommon}Peu Commun{}",
-                    "{s:0.8}{C:money}$#4#{} par Joker {C:rare}Rare{}",
-                    "{s:0.8}une {C:spectral,E:1}carte spectrale{}",
-                    "{s:0.8}par Joker {C:legendary}Légendaire{}",
-                    "Ni {C:attention}intérêts{} ni bonus de {C:blue}main restante{}"
+                    "{s:0.8}Après avoir battu une{} {s:0.8,C:attention}Blinde Boss{}{s:0.8} :{}",
+                    "{s:0.8,C:money}$#2#{} {s:0.8}par{} {s:0.8,C:common}Commun{}",
+                    "{s:0.8,C:money}$#3#{} {s:0.8}par{} {s:0.8,C:uncommon}Peu commun{}{}",
+                    "{s:0.8,C:money}$#4#{} {s:0.8}par{} {s:0.8,C:rare}Rare{}{}",
+                    "{s:0.8,C:spectral,E:1}1 carte spectrale{} {s:0.8}par{} {s:0.8,C:legendary}Légendaire{}{}",
+                    "Vous ne percevez pas d'{C:attention}intérêts{}"
                 },
                 unlock = {
                     "Découvrez au moins",

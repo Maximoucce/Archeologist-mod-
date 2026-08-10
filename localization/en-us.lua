@@ -94,13 +94,12 @@ return {
             b_maxarch_Museum = {
                 name = "Museum Deck",
                 text = {
-                    "After beating a {C:attention}Boss Blind{}, earn :",
-                    "{s:0.8}{C:money}$#2#{} per {C:common}Common{} Joker",
-                    "{s:0.8}{C:money}$#3#{} per {C:uncommon}Uncommon{} Joker",
-                    "{s:0.8}{C:money}$#4#{} per {C:rare}Rare{} Joker",
-                    "{s:0.8}one {C:spectral,E:1}spectral card{}",
-                    "{s:0.8}per {C:legendary}Legendary{} Joker",
-                    "No {C:attention}Interest{} or extra {C:blue}Hand{} bonus"
+                    "{s:0.8}After beating a{} {s:0.8,C:attention}Boss Blind{}{s:0.8}, earn :{}",
+                    "{s:0.8,C:money}$#2#{} {s:0.8}per{} {s:0.8,C:common}Common{}",
+                    "{s:0.8,C:money}$#3#{} {s:0.8}per{} {s:0.8,C:uncommon}Uncommon{}{}",
+                    "{s:0.8,C:money}$#4#{} {s:0.8}per{} {s:0.8,C:rare}Rare{}{}",
+                    "{s:0.8,C:spectral,E:1}1 spectral card{} {s:0.8}per{} {s:0.8,C:legendary}Legendary{}{}",
+                    "{s:0.8}Earn no{} {s:0.8,C:attention}Interest{}"
                 },
                 unlock = {
                     "Discover at least",
