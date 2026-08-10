@@ -133,8 +133,8 @@ return {
                 name = "Pelle",
                 text = {
                     "Octroie {C:money}$1{} par carte jouée",
-                    "si {C:attention}50%{} du jeu a été pioché",
-                    "{C:inactive}(#3#/#1# requis){}"
+                    "si {C:attention}1/3{} du jeu a été pioché",
+                    "{C:inactive}(#6#/#1# requis){}"
                 }
             },
             v_maxarch_excavatorvoucher = {
@@ -143,8 +143,8 @@ return {
                     "Octroie de manière",
                     "permanente {C:red}+#5#{} défausse",
                     "Octroie {C:money}$1{} par carte jouée",
-                    "si {C:attention}75%{} du jeu a été pioché",
-                    "{C:inactive}(#4#/#1# requis){}"
+                    "si {C:attention}2/3{} du jeu a été pioché",
+                    "{C:inactive}(#6#/#1# requis){}"
                 },
                 unlock = {
                     "Utilisez la {C:voucher}Pelle{}",

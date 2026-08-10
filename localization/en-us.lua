@@ -133,9 +133,9 @@ return {
                 name = "Shovel",
                 text = {
                     "Grants {C:money}$1{} per card played",
-                    "if {C:attention}50%{} of the deck",
+                    "if {C:attention}1/3{} of the deck",
                     "has been drawn",
-                    "{C:inactive}(#3#/#1# required){}"
+                    "{C:inactive}(#6#/#1# required){}"
                 }
             },
             v_maxarch_excavatorvoucher = {
@@ -143,9 +143,9 @@ return {
                 text = {
                     "Permanently gain {C:red}+#5#{} discard",
                     "Grants {C:money}$1{} per card played",
-                    "if {C:attention}75%{} of the deck",
+                    "if {C:attention}2/3{} of the deck",
                     "has been drawn",
-                    "{C:inactive}(#4#/#1# required){}"
+                    "{C:inactive}(#6#/#1# required){}"
                 },
                 unlock = {
                     "Redeem {C:voucher}Shovel{}",

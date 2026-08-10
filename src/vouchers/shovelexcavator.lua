@@ -22,12 +22,16 @@ SMODS.Voucher {
         local remcards = ((G.deck and G.deck.cards) and #G.deck.cards or 52)
         local halfdeck = math.floor(totcards*0.5)
         local quartdeck = math.floor(totcards*0.25)
+        local thirddeck = math.floor(totcards*0.33)
+        local twothirddeck = math.floor(totcards*0.66)
         return {
             vars = {
                 totcards,
                 remcards,
                 halfdeck,
-                quartdeck
+                quartdeck,
+                thirddeck,
+                twothirddeck
             }
         }
     end,
@@ -37,7 +41,7 @@ SMODS.Voucher {
         local remcards = ((G.deck and G.deck.cards) and #G.deck.cards or 52)
         --Code from the Tooth
         if context.press_play then
-            if remcards <= math.floor(totcards*0.5) then
+            if remcards <= math.floor(totcards*0.66) then
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
                     delay = 0.2,
@@ -105,13 +109,17 @@ SMODS.Voucher {
         local remcards = ((G.deck and G.deck.cards) and #G.deck.cards or 52)
         local halfdeck = math.floor(totcards*0.5)
         local quartdeck = math.floor(totcards*0.25)
+        local thirddeck = math.floor(totcards*0.33)
+        local twothirddeck = math.floor(totcards*0.66)
         return {
             vars = {
                 totcards,
                 remcards,
                 halfdeck,
                 quartdeck,
-                card.ability.extra.discards
+                card.ability.extra.discards,
+                thirddeck,
+                twothirddeck
             }
         }
     end,
@@ -126,7 +134,7 @@ SMODS.Voucher {
         local remcards = ((G.deck and G.deck.cards) and #G.deck.cards or 52)
         --Code from the Tooth
         if context.press_play then
-            if remcards <= math.floor(totcards*0.25) then
+            if remcards <= math.floor(totcards*0.33) then
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
                     delay = 0.2,

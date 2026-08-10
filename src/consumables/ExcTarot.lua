@@ -23,13 +23,14 @@ SMODS.Consumable {    --rework needed
     
     config = {
         extra = {
-            odds = 3,
+            num = 3,
+            odds = 6,
             dollars = 50
         }
     },
 
     loc_vars = function(self, info_queue, card)
-        local numerator, denominator = SMODS.get_probability_vars(card, 2, card.ability.extra.odds,
+        local numerator, denominator = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.odds,
             "maxarch_ExcTarot")
         return { vars = { numerator, denominator, card.ability.extra.dollars, " " } }
     end,
@@ -85,15 +86,19 @@ SMODS.Consumable {    --rework needed
         return true
     end,
 
+    --Interactions with vouchers
 	update = function(self, card, dt)
         if not self.discovered and not card.bypass_discovery_center then return end
         if card.children and card.children.center then
             if G.GAME.used_vouchers["v_maxarch_excavatorvoucher"] then
                 card.children.center:set_sprite_pos({ x = 2, y = 0})
+                card.ability.extra.num = 5
             elseif G.GAME.used_vouchers["v_maxarch_shovelvoucher"] then
                 card.children.center:set_sprite_pos({ x = 1, y = 0})
+                card.ability.extra.num = 4
             else
                 card.children.center:set_sprite_pos({ x = 0, y = 0})
+                card.ability.extra.num = 3
             end
         end
     end
