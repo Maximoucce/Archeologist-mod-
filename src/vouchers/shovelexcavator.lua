@@ -1,6 +1,6 @@
 SMODS.Atlas {
     key = "voucherstest",
-    path = "voucherstest3soul+wsale3.png",
+    path = "vouchersfinal2.png", --1 for soul 2 for souless
     px = 71,
     py = 95
 }
@@ -11,6 +11,10 @@ SMODS.Voucher {
     atlas = "voucherstest",
     pos = {
         x = 0,
+        y = 0
+    },
+    soul_pos = {
+        x = 5, --3 for soul >3 for souless
         y = 0
     },
     discovered = false,
