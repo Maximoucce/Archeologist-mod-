@@ -1,8 +1,10 @@
 SMODS.Atlas {
     key = "bossilimg",
-    path = "fossilEN.png",
-    px = 32,
-    py = 32
+    path = "bossilshine.png",
+    atlas_table = "ANIMATION_ATLAS",
+    frames = 21,
+    px = 34,
+    py = 34
 }
 
 SMODS.Sound({

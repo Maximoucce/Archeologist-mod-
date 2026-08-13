@@ -52,7 +52,7 @@ SMODS.Joker {
             if context.before and G.GAME.current_round.hands_played == 0 and #context.full_hand == 1 then
                 local target_card = context.full_hand[1]
                 if target_card.config.center.key == "m_maxarch_sanddd" then  
-                    local random_enhancement = SMODS.poll_enhancement({ guaranteed = true , options = { "m_bonus", "m_glass", "m_gold", "m_lucky", "m_mult", "m_steel", "m_stone", "m_wild"}})
+                    local random_enhancement = SMODS.poll_enhancement({ guaranteed = true}) --, options = { "m_bonus", "m_glass", "m_gold", "m_lucky", "m_mult", "m_steel", "m_stone", "m_wild"}})
                     --poll_enhancement(key, mod, guaranteed, options)
                     local random_edition = SMODS.poll_edition({key = "j_maxarch_Brushjoker", no_negative = true, guaranteed = true})
                     --poll_edition(key, mod, no_negative, guaranteed, options)
