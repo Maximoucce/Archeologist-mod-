@@ -34,8 +34,7 @@ return {
             arch_incompat = {
                 name = "Incompatible",
                 text = {
-                    "{C:mult}L'Archéologue ne peut pas{}",
-                    "{C:mult}se copier lui-même{}"
+                    "{C:mult}#1#{}"
                 }
             },
             brokeF = {

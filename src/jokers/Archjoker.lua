@@ -106,18 +106,24 @@ SMODS.Joker {
         
         local previous_run = EJ_load_previous_run()
         local target_key = (position and previous_run) and previous_run[position] or nil
-        
-        if target_key == self.key then
-            info_queue[#info_queue+1] = { key = 'arch_incompat', set = 'Other' }
-            return { vars = { "Incompatible" } }
+        local target_center = target_key and G.P_CENTERS[target_key]
+
+        if not target_center then
+            return { vars = {} }
+        end
+
+        local card_name = target_center.name or "No key?"
+
+        if target_key == self.key or target_center.blueprint_compat == false then
+            info_queue[#info_queue+1] = { key = 'arch_incompat', set = 'Other', vars = {card_name} }
+            return { vars = { card_name } }
         end
         
-        if target_key and G.P_CENTERS[target_key] then
+        if target_key and G.P_CENTERS[target_key] and target_center.blueprint_compat == true then
             info_queue[#info_queue+1] = G.P_CENTERS[target_key]
-            return { vars = { G.P_CENTERS[target_key].name } }
+            return { vars = { card_name } }  --or : G.P_CENTERS[target_key].name } }
         end
         
-        return { vars = { "Aucun" } }
     end,
 
     calculate = function(self, card, context)
@@ -128,6 +134,11 @@ SMODS.Joker {
 
         local previous_run = EJ_load_previous_run()
         local target_key = (position and previous_run) and previous_run[position] or nil
+        local target_center = target_key and G.P_CENTERS[target_key]
+
+        if not target_center or target_key == self.key or target_center.blueprint_compat == false then
+            return
+        end
 
         if target_key and target_key ~= self.key and G.P_CENTERS[target_key] then
             local target_center = G.P_CENTERS[target_key]
@@ -152,31 +163,46 @@ SMODS.Joker {
                 end
             end
             
-            if card.ability.persisted_states[target_key] then
-                temp_ability.extra = copy_table(card.ability.persisted_states[target_key])
-                if card.ability.persisted_states[target_key .. '_to_do_target'] then
-                    temp_ability.to_do_target = card.ability.persisted_states[target_key .. '_to_do_target']
-                end
-            else
-                if target_center.config and target_center.config.extra then
-                    temp_ability.extra = copy_table(target_center.config.extra)
+            if card.ability.persisted_states[target_key] ~= nil then
+                local saved_extra = card.ability.persisted_states[target_key]
+                if type(saved_extra) == 'table' then
+                    temp_ability.extra = copy_table(saved_extra)
                 else
-                    temp_ability.extra = {} 
+                    temp_ability.extra = saved_extra
                 end
+            end
+
+            if card.ability.persisted_states[target_key .. '_to_do_target'] then
+                temp_ability.to_do_target = card.ability.persisted_states[target_key .. '_to_do_target']
             end
             
             card.config.center = target_center
             card.ability = temp_ability
             
             local ctx = context
-            ctx.blueprint = true
-            ctx.blueprint_card = card
+
+            if context.end_of_round and not context.repetition and not context.individual then
+                ctx.blueprint = nil
+            else
+                ctx.blueprint = true
+                ctx.blueprint_card = card
+            end
             
             local ret = card:calculate_joker(ctx)
-            
-            if card.ability.extra then
-                old_ability.persisted_states[target_key] = copy_table(card.ability.extra)
+
+            if ret and (ret.remove or ret.self_destruct) then
+                ret.remove = nil
+                ret.self_destruct = nil
             end
+            
+            if card.ability.extra ~= nil then
+                if type(card.ability.extra) == 'table' then
+                    old_ability.persisted_states[target_key] = copy_table(card.ability.extra)
+                else
+                    old_ability.persisted_states[target_key] = card.ability.extra
+                end
+            end
+
             if card.ability.to_do_target then
                 old_ability.persisted_states[target_key .. '_to_do_target'] = card.ability.to_do_target
             end

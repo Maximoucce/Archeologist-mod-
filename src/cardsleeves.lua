@@ -1,13 +1,14 @@
 SMODS.Atlas {
-    key = "Museum",
-    path = "Museeidee.png",
-    px = 71,
+    key = "museumsleeve",
+    path = "museumsleeve.png",
+    px = 73,
     py = 95
 }
 
-SMODS.Back {
-    key = "Museum",
-    atlas = "Museum",
+CardSleeves.Sleeve {         --WIP
+    key = "museumsleeve",
+    name = "Museum Sleeve",
+    atlas = "museumsleeve",
     pos = {
         x = 0,
         y = 0
@@ -20,28 +21,43 @@ SMODS.Back {
         }
     },
 
-    apply = function(self, back)
+    apply = function(self)
         G.GAME.modifiers.money_per_hand = 1
         G.GAME.modifiers.no_interest = true
     end,
 
-    unlocked = false,
+    unlocked = true, --change
+    unlock_condition = { deck = "b_maxarch_Museum", stake = "stake_blue" },
 
-    --Code from Black Deck
-    locked_loc_vars = function(self, info_queue, back)
-        return { vars = { 150 } }
-    end,
-    check_for_unlock = function(self, args)
-        return args.type == "discover_amount" and args.amount >= 150
+    loc_vars = function(self)
+        local key, vars
+        if self.get_current_deck_key() == "b_maxarch_Museum" then
+            key = self.key .. "_alt"
+            vars = {}
+        else
+            key = self.key
+            vars = { self.config.extra.dollars, 1, 3, 5 }
+        end
+        return { key = key, vars = vars }
     end,
 
-    loc_vars = function(self, info_queue, back)
-        return { vars = { self.config.extra.dollars, 1, 3, 5 } }
+    --Alt
+    get_weight = function(self, weight, key)
+        if self.get_current_deck_key() == "b_maxarch_Museum" then
+            if key == "Rare" or key == "c_soul" then
+                return weight * 100
+            end
+        end
+        return weight
     end,
 
-    calc_dollar_bonus = function(self, card)
+    --Normal
+    calculate = function(self, back, context)
+        if self.get_current_deck_key() == "b_maxarch_Museum" then
+            return 0
+        end
         local total_dollars = 0
-        if G.GAME.blind.boss then
+        if context.blind_defeated then
             for _, j in ipairs(G.jokers.cards) do
                 if j.config.center.rarity == 1 then
                     total_dollars = total_dollars + (1*self.config.extra.dollars)
@@ -61,7 +77,7 @@ SMODS.Back {
                             end)}))
                     end
                 end
-            end
+            end  
         end
         return total_dollars
     end

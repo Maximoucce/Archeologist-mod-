@@ -34,8 +34,7 @@ return {
             arch_incompat = {
                 name = "Incompatible",
                 text = {
-                    "{C:mult}Archeologist can't{}",
-                    "{C:mult}copy itself{}"
+                    "{C:mult}#1#{}"
                 }
             },
             brokeF = {
@@ -107,6 +106,26 @@ return {
                     "your collection"
                 }
             }
+        },
+        Sleeve = {
+            sleeve_maxarch_museumsleeve = {
+                name = "Museum Sleeve",
+                text = {
+                    "{s:0.8}After beating a{} {s:0.8,C:attention}Boss Blind{}{s:0.8}, earn :{}",
+                    "{s:0.8,C:money}$#2#{} {s:0.8}per{} {s:0.8,C:common}Common{}",
+                    "{s:0.8,C:money}$#3#{} {s:0.8}per{} {s:0.8,C:uncommon}Uncommon{}{}",
+                    "{s:0.8,C:money}$#4#{} {s:0.8}per{} {s:0.8,C:rare}Rare{}{}",
+                    "{s:0.8,C:spectral,E:1}1 spectral card{} {s:0.8}per{} {s:0.8,C:legendary}Legendary{}{}",
+                    "{s:0.8}Earn no{} {s:0.8,C:attention}Interest{}"
+                },
+            },
+            sleeve_maxarch_museumsleeve_alt = {
+                name = "Museum Sleeve",
+                text = {
+                "Doubles the spawn rates of",
+                "{C:rare}Rare{} Jokers and {C:spectral}Soul cards{}"
+                },
+            },
         },
         Blind = {
             bl_maxarch_bossil = {
