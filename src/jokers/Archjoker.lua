@@ -1,4 +1,4 @@
--- Loads with cache
+--Loads with cache
 function EJ_load_previous_run()
     if G.EJ_previous_run_cache then 
         return G.EJ_previous_run_cache 
@@ -21,14 +21,14 @@ function EJ_load_previous_run()
     return jokers
 end
 
--- Security for invalid (nil) tables
+--Security for nil
 function EJ_save_previous_run(joker_keys)
     if type(joker_keys) ~= 'table' then
         joker_keys = {}
     end
 
     love.filesystem.write("ej_previous_run.txt", table.concat(joker_keys, ","))
-    G.EJ_previous_run_cache = nil -- Reset cache
+    G.EJ_previous_run_cache = nil --Reset cache
 end
 
 local EJ_old_update = Game.update
@@ -107,15 +107,19 @@ SMODS.Joker {
         local previous_run = EJ_load_previous_run()
         local target_key = (position and previous_run) and previous_run[position] or nil
         local target_center = target_key and G.P_CENTERS[target_key]
+        local EXCLUDED_JOKERS = {
+            ['j_blueprint'] = true,
+            ['j_brainstorm'] = true,
+        }
 
         if not target_center then
             return { vars = {} }
         end
 
-        local card_name = target_center.name or "No key?"
+        local card_name = target_center.name or "No Name?"
 
-        if target_key == self.key or target_center.blueprint_compat == false then
-            info_queue[#info_queue+1] = { key = 'arch_incompat', set = 'Other', vars = {card_name} }
+        if target_key == self.key or target_center.blueprint_compat == false or EXCLUDED_JOKERS[target_key] then
+            info_queue[#info_queue+1] = { key = "arch_incompat", set = "Other", vars = {card_name} }
             return { vars = { card_name } }
         end
         
@@ -135,85 +139,97 @@ SMODS.Joker {
         local previous_run = EJ_load_previous_run()
         local target_key = (position and previous_run) and previous_run[position] or nil
         local target_center = target_key and G.P_CENTERS[target_key]
+        local EXCLUDED_JOKERS = {
+            ['j_blueprint'] = true,
+            ['j_brainstorm'] = true,
+        }
 
-        if not target_center or target_key == self.key or target_center.blueprint_compat == false then
+        if not target_center or target_key == self.key or target_center.blueprint_compat == false or EXCLUDED_JOKERS[target_key] then
             return
         end
 
-        if target_key and target_key ~= self.key and G.P_CENTERS[target_key] then
-            local target_center = G.P_CENTERS[target_key]
-            
-            card.ability.persisted_states = card.ability.persisted_states or {}
-            
-            local old_center = card.config.center
-            local old_ability = card.ability
-            
-            local temp_ability = copy_table(old_ability)
-            temp_ability.name = target_center.name
-            temp_ability.set = target_center.set or 'Joker'
-            temp_ability.effect = target_center.effect
-            
-            if target_center.config then
-                for k, v in pairs(target_center.config) do
-                    if type(v) == 'table' then
-                        temp_ability[k] = copy_table(v)
-                    else
-                        temp_ability[k] = v
-                    end
-                end
-            end
-            
-            if card.ability.persisted_states[target_key] ~= nil then
-                local saved_extra = card.ability.persisted_states[target_key]
-                if type(saved_extra) == 'table' then
-                    temp_ability.extra = copy_table(saved_extra)
+        card.ability.persisted_states = card.ability.persisted_states or {}
+
+        local old_center = card.config.center
+        local old_ability = card.ability
+
+        -- 1. Create temporary ability initialized with target defaults
+        local temp_ability = copy_table(old_ability)
+        temp_ability.name = target_center.name
+        temp_ability.set = target_center.set or 'Joker'
+        temp_ability.effect = target_center.effect
+
+        if target_center.config then
+            for k, v in pairs(target_center.config) do
+                if type(v) == 'table' then
+                    temp_ability[k] = copy_table(v)
                 else
-                    temp_ability.extra = saved_extra
+                    temp_ability[k] = v
                 end
             end
+        end
 
-            if card.ability.persisted_states[target_key .. '_to_do_target'] then
-                temp_ability.to_do_target = card.ability.persisted_states[target_key .. '_to_do_target']
-            end
-            
-            card.config.center = target_center
-            card.ability = temp_ability
-            
-            local ctx = context
-
-            if context.end_of_round and not context.repetition and not context.individual then
-                ctx.blueprint = nil
-            else
-                ctx.blueprint = true
-                ctx.blueprint_card = card
-            end
-            
-            local ret = card:calculate_joker(ctx)
-
-            if ret and (ret.remove or ret.self_destruct) then
-                ret.remove = nil
-                ret.self_destruct = nil
-            end
-            
-            if card.ability.extra ~= nil then
-                if type(card.ability.extra) == 'table' then
-                    old_ability.persisted_states[target_key] = copy_table(card.ability.extra)
+        -- 2. DYNAMIC RESTORE: Overlay all saved keys from persisted_states[target_key]
+        local saved_state = card.ability.persisted_states[target_key]
+        if saved_state then
+            for k, v in pairs(saved_state) do
+                if type(v) == 'table' then
+                    temp_ability[k] = copy_table(v)
                 else
-                    old_ability.persisted_states[target_key] = card.ability.extra
+                    temp_ability[k] = v
                 end
             end
+        end
 
-            if card.ability.to_do_target then
-                old_ability.persisted_states[target_key .. '_to_do_target'] = card.ability.to_do_target
+        card.config.center = target_center
+        card.ability = temp_ability
+
+        -- 3. Context Preparation
+        local ctx = context
+        
+        -- Unset blueprint flag for state-modifying contexts so scaling/modifying cards update naturally
+        local is_state_changing_context = context.end_of_round 
+            or context.setting_blind 
+            or (context.cardarea == G.jokers and not context.before and not context.after)
+
+        if is_state_changing_context then
+            ctx.blueprint = nil
+        else
+            ctx.blueprint = true
+            ctx.blueprint_card = card
+        end
+
+        -- 4. Execute target calculation
+        local ret = card:calculate_joker(ctx)
+
+        -- Prevent self-destruction from destroying Archjoker
+        if ret and (ret.remove or ret.self_destruct) then
+            ret.remove = nil
+            ret.self_destruct = nil
+        end
+
+        -- 5. DYNAMIC SAVE: Capture every current property inside card.ability
+        local new_saved_state = {}
+        for k, v in pairs(card.ability) do
+            -- Skip system keys that belong exclusively to Archjoker
+            if k ~= 'persisted_states' and k ~= 'arch_incompat' then
+                if type(v) == 'table' then
+                    new_saved_state[k] = copy_table(v)
+                else
+                    new_saved_state[k] = v
+                end
             end
-            
-            card.config.center = old_center
-            card.ability = old_ability
-            
-            if ret then
-                ret.card = card
-                return ret
-            end
+        end
+        
+        old_ability.persisted_states[target_key] = new_saved_state
+
+        -- Revert identity back to Archjoker
+        card.config.center = old_center
+        card.ability = old_ability
+
+        if ret then
+            ret.card = card
+            return ret
         end
     end,
 
