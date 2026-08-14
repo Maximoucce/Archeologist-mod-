@@ -50,7 +50,6 @@ return {
                     "{C:tarot}dawn{} : {C:chips}+#3#{} Chips and {C:mult}+#1#{} Mult if {C:attention}first{}",
                     "{C:gold}zenith{} : {C:money}+#2#${} if in the {C:attention}middle{}",
                     "{C:mult}dusk{} : {X:mult,C:white}X#6#{} Mult if {C:attention}last{}"
-
                 }
             }
         },
