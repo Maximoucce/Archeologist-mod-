@@ -107,7 +107,7 @@ SMODS.Joker {
         local previous_run = EJ_load_previous_run()
         local target_key = (position and previous_run) and previous_run[position] or nil
         local target_center = target_key and G.P_CENTERS[target_key]
-        local EXCLUDED_JOKERS = {
+        local EXCLUDED_JOKERS = { --If too complex to handle
             ['j_blueprint'] = true,
             ['j_brainstorm'] = true,
         }
@@ -122,12 +122,35 @@ SMODS.Joker {
             info_queue[#info_queue+1] = { key = "arch_incompat", set = "Other", vars = {card_name} }
             return { vars = { card_name } }
         end
-        
-        if target_key and G.P_CENTERS[target_key] and target_center.blueprint_compat == true then
-            info_queue[#info_queue+1] = G.P_CENTERS[target_key]
-            return { vars = { card_name } }  --or : G.P_CENTERS[target_key].name } }
+
+        local saved_state = (card.ability and card.ability.persisted_states) and card.ability.persisted_states[target_key]
+
+        if saved_state then
+            --Set temporary config
+            local temp_config = copy_table(target_center.config or {})
+            for k, v in pairs(saved_state) do
+                if type(v) == 'table' then
+                    temp_config[k] = copy_table(v)
+                else
+                    temp_config[k] = v
+                end
+            end
+
+            --Restore modified config
+            local custom_center = setmetatable({}, { __index = target_center })
+            for k, v in pairs(target_center) do
+                custom_center[k] = v
+            end
+            custom_center.config = temp_config
+
+            --If modified
+            info_queue[#info_queue+1] = custom_center
+        else
+            --Standard
+            info_queue[#info_queue+1] = target_center
         end
-        
+
+        return { vars = { card_name } }
     end,
 
     calculate = function(self, card, context)
@@ -139,7 +162,7 @@ SMODS.Joker {
         local previous_run = EJ_load_previous_run()
         local target_key = (position and previous_run) and previous_run[position] or nil
         local target_center = target_key and G.P_CENTERS[target_key]
-        local EXCLUDED_JOKERS = {
+        local EXCLUDED_JOKERS = { --If too complex to handle
             ['j_blueprint'] = true,
             ['j_brainstorm'] = true,
         }
@@ -153,7 +176,7 @@ SMODS.Joker {
         local old_center = card.config.center
         local old_ability = card.ability
 
-        -- 1. Create temporary ability initialized with target defaults
+        --Set temporary default ability
         local temp_ability = copy_table(old_ability)
         temp_ability.name = target_center.name
         temp_ability.set = target_center.set or 'Joker'
@@ -169,7 +192,7 @@ SMODS.Joker {
             end
         end
 
-        -- 2. DYNAMIC RESTORE: Overlay all saved keys from persisted_states[target_key]
+        --Restore saved persisted_states
         local saved_state = card.ability.persisted_states[target_key]
         if saved_state then
             for k, v in pairs(saved_state) do
@@ -184,12 +207,26 @@ SMODS.Joker {
         card.config.center = target_center
         card.ability = temp_ability
 
-        -- 3. Context Preparation
+        --Fetch context
         local ctx = context
         
-        -- Unset blueprint flag for state-modifying contexts so scaling/modifying cards update naturally
-        local is_state_changing_context = context.end_of_round 
-            or context.setting_blind 
+        local is_state_changing_context =
+            context.end_of_round
+            or context.eval
+            or context.skipping_booster
+            or context.first_hand_drawn
+            or context.before
+            or context.after
+            or context.setting_blind
+            or context.skip_blind
+            or context.buying_card
+            or context.selling_card
+            or context.open_booster
+            or context.reroll_shop
+            or context.using_consumeable
+            or context.remove_playing_card
+            or context.cards_destroyed
+            or context.discard
             or (context.cardarea == G.jokers and not context.before and not context.after)
 
         if is_state_changing_context then
@@ -199,19 +236,18 @@ SMODS.Joker {
             ctx.blueprint_card = card
         end
 
-        -- 4. Execute target calculation
+        --Calculation
         local ret = card:calculate_joker(ctx)
 
-        -- Prevent self-destruction from destroying Archjoker
+        --Prevent self-destruct (not working)
         if ret and (ret.remove or ret.self_destruct) then
             ret.remove = nil
             ret.self_destruct = nil
         end
 
-        -- 5. DYNAMIC SAVE: Capture every current property inside card.ability
+        --Save new persisted_states
         local new_saved_state = {}
         for k, v in pairs(card.ability) do
-            -- Skip system keys that belong exclusively to Archjoker
             if k ~= 'persisted_states' and k ~= 'arch_incompat' then
                 if type(v) == 'table' then
                     new_saved_state[k] = copy_table(v)
@@ -223,7 +259,7 @@ SMODS.Joker {
         
         old_ability.persisted_states[target_key] = new_saved_state
 
-        -- Revert identity back to Archjoker
+        --Revert back to Archeologist
         card.config.center = old_center
         card.ability = old_ability
 
@@ -233,7 +269,7 @@ SMODS.Joker {
         end
     end,
 
-    --Code from Fusion Jokers (Club Wizard)
+    --Code from Fusion Jokers (Club Wizard) to change sprite with config
 	update = function(self, card, dt)
         if not self.discovered and not card.bypass_discovery_center then return end
         if MaxArchMod.archconfig.arch_alt_art and card.ability.extra.art ~= "alt" then
