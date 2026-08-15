@@ -5,10 +5,10 @@ SMODS.Atlas {
     py = 95
 }
 
-function forceGameover()
+--[[function forceGameover()
     G.STATE = G.STATES.GAME_OVER
     G.STATE_COMPLETE = false
-end
+end]]
 
 SMODS.Sound({
     key = "PC",
@@ -30,7 +30,8 @@ SMODS.Consumable {
         extra = {
             num = 3,
             odds = 6,
-            dollars = 50
+            dollars = 50,
+            bfactor = 2
         }
     },
 
@@ -66,19 +67,20 @@ SMODS.Consumable {
                 backdrop_colour = G.C.MULT,
                 card:juice_up(0.3, 0.5)
             })
-            --ease_dollars(-999999)
-            --G.GAME.current_round.hands_left = 0
-            --G.GAME.current_round.discards_left = 0
-            --G.GAME.round_resets.hands = 0
-            --G.GAME.round_resets.discards = 0
-            --G.GAME.blind.chips = 1e300
+            
+            if G.GAME.dollars ~= 0 then
+                ease_dollars(-G.GAME.dollars, true)
+            end
+            G.GAME.modifiers.scaling = (G.GAME.modifiers.scaling or 1) * card.ability.extra.bfactor
+
+            --[[
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 delay = 3,
                 func = function()
                     forceGameover()
                 end
-            }))
+            }))]]
         end
     end,
 

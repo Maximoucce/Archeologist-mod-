@@ -60,7 +60,8 @@ return {
                 name = "Délavé",
                 text = {
                     "Valeurs aléatoires entre",
-                    "{C:attention}X#1#{} et {C:attention}X#2#{}"
+                    "{C:attention}X#1#{} et {C:attention}X#2#{}",
+                    "{C:inactive,s:0.8}Actuellement : {C:dark_edition,E:1}X#3#"
                 },
             },
             maxarch_faulty = {

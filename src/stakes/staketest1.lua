@@ -38,7 +38,7 @@ SMODS.Stake {
     },
 
     modifiers = function()
-        G.GAME.modifiers.enable_washed_in_shop = true
+        G.GAME.modifiers.enable_maxarch_washed = true
     end,
 
     colour = HEX("a0c69e")
@@ -71,7 +71,7 @@ SMODS.Stake {
 
 
     modifiers = function()
-        G.GAME.modifiers.enable_faulty_in_shop = true
+        G.GAME.modifiers.enable_maxarch_faulty = true
     end,
 
     colour = HEX("a07c46")

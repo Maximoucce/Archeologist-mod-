@@ -72,7 +72,8 @@ return {
                 name = "Washed",
                 text = {
                     "Randomizes joker values",
-                    "between {C:attention}X#1#{} and {C:attention}X#2#{}"
+                    "between {C:attention}X#1#{} and {C:attention}X#2#{}",
+                    "{C:inactive,s:0.8}Currently : {C:dark_edition,E:1}X#3#"
                 },
             },
             maxarch_faulty = {
