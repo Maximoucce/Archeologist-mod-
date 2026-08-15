@@ -1,6 +1,6 @@
 SMODS.Atlas {
     key = "modicon",
-    path = "ArchTagHDf.png",
+    path = "Icon2x.png",
     px = 34,
     py = 34
 }
