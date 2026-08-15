@@ -7,7 +7,7 @@ SMODS.Atlas {
 
 SMODS.Atlas {
     key = "stakestickertest",
-    path = "stakestickertest2.png",
+    path = "stakestickertest3.png",
     px = 71,
     py = 95
 }
