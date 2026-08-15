@@ -1,6 +1,6 @@
 SMODS.Atlas {
     key = "stickerstest",
-    path = "stickerstest1.png",
+    path = "stickerstestdouble.png",
     px = 71,
     py = 95
 }
@@ -22,7 +22,7 @@ SMODS.Sticker {
     atlas = "stickerstest",
     pos = {
         x = 0,
-        y = 0
+        y = 0 --Change to 1 if other modded stickers overlap
     },
 
     needs_enable_flag = true,
@@ -30,6 +30,9 @@ SMODS.Sticker {
     config = {
         down_limit = 0.5,
         up_limit = 1.3,
+        extra = {
+            art = "standard"
+        }
     },
 
     default_compat = true,
@@ -67,7 +70,7 @@ SMODS.Sticker {
     loc_vars = function(self, info_queue, card)
         local lfactor = card.ability.washed_factor or 1
         return { vars = { self.config.down_limit, self.config.up_limit, lfactor } }
-    end,
+    end
 }
 
 --------------------------------------------------------------------------------------------
@@ -89,14 +92,17 @@ SMODS.Sticker {
     atlas = "stickerstest",
     pos = {
         x = 1,
-        y = 0
+        y = 0 --Change to 1 if other modded stickers overlap
     },
 
     needs_enable_flag = true,
 
     config = {
         num = 1,
-        odds = 5
+        odds = 5,
+        extra = {
+            art = "standard"
+        }
     },
 
     loc_vars = function(self, info_queue, card)
