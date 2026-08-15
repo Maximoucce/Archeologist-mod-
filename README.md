@@ -1,14 +1,21 @@
-# welcome
+# ![icon](assets/1x/Icon1x.png) Archeologist Mod
 
 This mod is a test, and adds:
 
-**New:**
-* **Jokers:**
-  * Archeologist --> same effect as blueprint but for cards that were at his place last run (*/!\ can be buggy with some jokers*)
-  * Brush --> when first hand is a single Sandy card, remove the sand and turn it into a new enhanced card (*enhanced + seal + edition*)
-  * Sandy joker --> Reduce blind size by X0.02 for each sandy card in your full deck (base X1)
-* **Enhancement:** Sandy --> X0.95 blind size when card is scored
-* **Tarots:**
+# **3 New Jokers :**
+<img width="395" height="180" alt="2379780_2075" src="https://github.com/user-attachments/assets/69d16147-62b2-473b-b5cd-cab54d6e08ab" />
+
+1. **Archeologist *(Rare)*** : Has the same effect as blueprint or brainstorm, but for cards that were at it's position at the end of last run. <br>⚠️*It sometimes doesn't copy some jokers or can crash the game*
+2. **Brush *(Common)*** : when first hand is a single Sandy card, remove the sand and turn it into a new enhanced card (*enhanced + seal + edition*) <br>➡️*The brush pixel art comes from the **Faithful java 64x texture pack** for Minecraft [get it here](https://faithfulpack.net)*
+
+3. **Sandy Joker *(Uncommon)*** : Multiplies the blind size by X0.02 for each **Sandy Card** in your full deck (starting at X1). 
+
+  
+# **A New Enhancement:**
+![icon](assets/1x/sandfinal.png)
+<br>**Sandy Cards** : Multiplies the blind X0.95 when the card is scored.
+
+# **Tarots:**
   * Desert --> makes 2 Sandy cards
   * Excavation --> 2/3 chance to get 50$; a very bad surprise otherwise
 * **Seal:** Scarab Seal --> different effects depending on position in played hand (1st=+20c and +3m ; else=+2$ ; last=X1.3m)
