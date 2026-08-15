@@ -51,7 +51,37 @@ return {
                     "{C:gold}zenith{} : {C:money}+#2#${} if in the {C:attention}middle{}",
                     "{C:mult}dusk{} : {X:mult,C:white}X#6#{} Mult if {C:attention}last{}"
                 }
-            }
+            },
+            maxarch_pale_green_sticker = {
+                name = "Pale Green Sticker",
+                text = {
+                    "Used this Joker",
+                    "to win on {C:attention}Pale Green",
+                    "{C:attention}Stake{} difficulty",
+                },
+            },
+            maxarch_brown_sticker = {
+                name = "Brown Sticker",
+                text = {
+                    "Used this Joker",
+                    "to win on {C:attention}Brown",
+                    "{C:attention}Stake{} difficulty",
+                },
+            },
+            maxarch_washed = {
+                name = "Washed",
+                text = {
+                    "Randomizes joker values",
+                    "between {C:attention}X#1#{} and {C:attention}X#2#{}"
+                },
+            },
+            maxarch_faulty = {
+                name = "Faulty",
+                text = {
+                    "{C:green}#1# in #2#{} chance to be",
+                    "debuffed each round"
+                },
+            },
         },
         Tarot = {
             c_maxarch_ExcTarot = {
@@ -168,6 +198,24 @@ return {
                     "Redeem {C:voucher}Shovel{}",
                     "{C:attention}#1#{} total times",
                     "{C:inactive}(#2#)",
+                },
+            }
+        },
+        Stake = {
+            stake_maxarch_pale_green = {
+                name = "Pale Green Stake",
+                text = {
+                    "Shop can have {C:attention}Washed{} Jokers",
+                    "{C:inactive,s:0.8}(Randomizes values between {C:attention,s:0.8}X0.5 {C:inactive,s:0.8}and {C:attention,s:0.8}X1.25 {C:inactive,s:0.8})",
+                    "{s:0.8}Applies all previous Stakes",
+                },
+            },
+            stake_maxarch_brown = {
+                name = "Brown Stake",
+                text = {
+                    "Shop can have {C:attention}Faulty{} Jokers",
+                    "{C:inactive,s:0.8}({C:green,s:0.8}1 in 5{C:inactive,s:0.8} chance to be debuffed each round)",
+                    "{s:0.8}Applies all previous Stakes",
                 },
             }
         },

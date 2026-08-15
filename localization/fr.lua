@@ -40,6 +40,37 @@ return {
             brokeF = {
                 name = "Fossile Brisé",
             },
+            maxarch_pale_green_sticker = {
+                name = "Autocollant vert pâle",
+                text = {
+                    "Joker utilisé",
+                    "pour gagner en difficulté",
+                    "{C:attention}Mise verte pâle{}",
+                },
+            },
+            maxarch_brown_sticker = {
+                name = "Autocollant marron",
+                text = {
+                    "Joker utilisé",
+                    "pour gagner en difficulté",
+                    "{C:attention}Mise marron{}",
+                },
+            },
+            maxarch_washed = {
+                name = "Délavé",
+                text = {
+                    "Valeurs aléatoires entre",
+                    "{C:attention}X#1#{} et {C:attention}X#2#{}"
+                },
+            },
+            maxarch_faulty = {
+                name = "Défectueux",
+                text = {
+                    "{C:green}1 chance(s) sur 5{} d'être",
+                    "débuff à chaque manche",
+
+                },
+            },
             maxarch_scarabs_seal = {
                 name = "Sceau Scarabée",
                 text = {
@@ -148,6 +179,24 @@ return {
                     "Utilisez la {C:voucher}Pelle{}",
                     "{C:attention}#1#{} fois au total",
                     "{C:inactive}(#2#)",
+                },
+            }
+        },
+        Stake = {
+            stake_maxarch_pale_green = {
+                name = "Mise verte pâle",
+                text = {
+                    "Les magasins peuvent posséder des Jokers {C:attention}Délavés{}",
+                    "{C:inactive,s:0.8}(Valeurs aléatoires entre {C:attention,s:0.8}X0.5 {C:inactive,s:0.8}et {C:attention,s:0.8}X1.25 {C:inactive,s:0.8})",
+                    "{s:0.8}Applique toutes les mises précédentes",
+                },
+            },
+            stake_maxarch_brown = {
+                name = "Mise marron",
+                text = {
+                    "Les magasins peuvent posséder des Jokers {C:attention}Défectueux{}",
+                    "{C:inactive,s:0.8}({C:green,s:0.8}1 chance(s) sur 5{C:inactive,s:0.8} d'être débuff à chaque manche)",
+                    "{s:0.8}Applique toutes les mises précédentes",
                 },
             }
         },

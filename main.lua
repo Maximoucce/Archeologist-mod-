@@ -49,4 +49,14 @@ for _, file in ipairs(vouchers_src) do
     assert(SMODS.load_file("src/vouchers/" .. file))()
 end
 
+local stakes_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/stakes")
+for _, file in ipairs(stakes_src) do
+    assert(SMODS.load_file("src/stakes/" .. file))()
+end
+
+local stickers_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/stickers")
+for _, file in ipairs(stickers_src) do
+    assert(SMODS.load_file("src/stickers/" .. file))()
+end
+
 SMODS.load_file("src/joker_display.lua")()

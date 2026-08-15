@@ -45,7 +45,7 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
-        if SMODS.pseudorandom_probability(card, "Excavation", 2, card.ability.extra.odds) then
+        if SMODS.pseudorandom_probability(card, "Excavation", card.ability.extra.num, card.ability.extra.odds) then
             ease_dollars(card.ability.extra.dollars)
             play_sound("polychrome1", 1, 0.5)
             attention_text({

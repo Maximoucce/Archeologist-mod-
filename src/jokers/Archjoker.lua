@@ -79,6 +79,8 @@ SMODS.Joker {
     discovered = false,
     eternal_compat = true,
     perishable_compat = true,
+    maxarch_washed_compat = false,
+    maxarch_faulty_compat = false,
     config = {
         extra = {
             art = "standard"
