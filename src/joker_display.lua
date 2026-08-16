@@ -79,11 +79,4 @@ if JokerDisplay then
             end
         end
     }
-
-    --[[jd_def["j_maxarch_Archjoker"] = {      --WIP
-        calc_function = function(card)
-            JokerDisplay.copy_display(card, card.ability.target_key)
-        end
-    }]]
-
 end

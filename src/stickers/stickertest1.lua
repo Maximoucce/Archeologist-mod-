@@ -35,7 +35,7 @@ SMODS.Sticker {   --SMODS.Stickers["maxarch_washed"]
 
     config = {
         down_limit = 0.5,
-        up_limit = 1.3,
+        up_limit = 1.5,
     },
 
     default_compat = true,
@@ -69,6 +69,13 @@ SMODS.Sticker {   --SMODS.Stickers["maxarch_washed"]
                         card.ability.extra = math.floor(card.ability.extra * lfactor)
                     elseif type(card.ability.extra) == "table" then
                         scale_value(card.ability.extra)
+                    end
+                end
+
+                local spec_keys = {"t_mult","t_chips"} --add more to fill gaps
+                for _, key in ipairs(spec_keys) do
+                    if type(card.ability[key]) == "number" then
+                        card.ability[key] = math.floor(card.ability[key] * lfactor)
                     end
                 end
                 card:set_cost()

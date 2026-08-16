@@ -207,7 +207,7 @@ return {
                 name = "Pale Green Stake",
                 text = {
                     "Shop can have {C:attention}Washed{} Jokers",
-                    "{C:inactive,s:0.8}(Randomizes values between {C:attention,s:0.8}X0.5 {C:inactive,s:0.8}and {C:attention,s:0.8}X1.25 {C:inactive,s:0.8})",
+                    "{C:inactive,s:0.8}(Randomizes values between {C:attention,s:0.8}X0.5 {C:inactive,s:0.8}and {C:attention,s:0.8}X1.5 {C:inactive,s:0.8})",
                     "{s:0.8}Applies all previous Stakes",
                 },
             },
