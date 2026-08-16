@@ -44,7 +44,7 @@ This mod is a test.<br>
 2. **Brown Stake** : Shop can have **Faulty Jokers**.
 
 # **2 New Stickers :**
-<img width="40" height="40" alt="223322" src="https://github.com/user-attachments/assets/121b19d4-94cc-4562-b91c-4134a3afc946" />  **Washed** : All the values in the config table and price of the joker get randomized between **X0.5** and **X1.3**.<br>
+<img width="40" height="40" alt="223322" src="https://github.com/user-attachments/assets/121b19d4-94cc-4562-b91c-4134a3afc946" />  **Washed** : All the values in the config table and price of the joker get randomized between **X0.5** and **X1.5**. *(rounded down for config, up for price)* <br>
 <img width="40" height="40" alt="233211" src="https://github.com/user-attachments/assets/dedb81b8-c4c7-44f4-94ec-a4ae8215beab" />  **Faulty** : 1 in 5 chances to be debuffed at the beginning of the round.
 
 # **A New Deck :**
