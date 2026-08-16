@@ -24,7 +24,7 @@ SMODS.current_mod.config_tab = function()
                         label = "Mewing Jokers compatibility",
                         ref_table = MaxArchMod.archconfig,
                         ref_value = "arch_alt_art",
-                    }),
+                    })
                 }
         }}
     }

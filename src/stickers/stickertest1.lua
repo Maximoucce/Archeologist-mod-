@@ -5,17 +5,23 @@ SMODS.Atlas {
     py = 95
 }
 
-SMODS.Sticker {
+local set_cost_value_ref = Card.set_cost_value
+function Card:set_cost_value(...)
+    local ret = set_cost_value_ref(self, ...)
+    if self.ability and self.ability.maxarch_washed then
+        local factor = self.ability.washed_factor or 100
+        self.cost = math.ceil(self.cost * factor)
+    end
+    return ret
+end
+
+SMODS.Sticker {   --SMODS.Stickers["maxarch_washed"]
     key = "washed",
 
     --Label for the badge, else doesn't work
     loc_txt = {
-        ["en-us"] = {
-                label = "Washed"
-        },
-        ["fr"] = {
-                label = "Délavé"
-        }
+        ["en-us"] = {label = "Washed"},
+        ["fr"] = {label = "Délavé"}
     },
 
     badge_colour = HEX("a0c69e"),
@@ -30,9 +36,6 @@ SMODS.Sticker {
     config = {
         down_limit = 0.5,
         up_limit = 1.3,
-        extra = {
-            art = "standard"
-        }
     },
 
     default_compat = true,
@@ -45,32 +48,37 @@ SMODS.Sticker {
 
     apply = function(self, card, val)
         SMODS.Sticker.apply(self, card, val)
+            if card.ability[self.key] then
+                card:set_cost()
+            end
             if val then
                 card.ability.washed_factor = self.config.down_limit + math.random() * (self.config.up_limit - self.config.down_limit)
                 local lfactor = card.ability.washed_factor or 1
-            if card.ability.extra then
-                if type(card.ability.extra) == "table" then
-                    for k, v in pairs(card.ability.extra) do
-                        if type(v) == "number" then
-                            card.ability.extra[k] = math.floor(v * lfactor)
+                local function scale_value(val)
+                    if type(val) == "number" then
+                        return math.floor(val * lfactor)
+                    elseif type(val) == "table" then
+                        for k, v in pairs(val) do
+                            val[k] = scale_value(v)
                         end
                     end
-                elseif type(card.ability.extra) == "number" then
-                    card.ability.extra = math.floor(card.ability.extra * lfactor)
+                    return val
                 end
-            end
-            --works ???
-            if card.cost then
-                card.cost = math.floor(card.cost * lfactor)
-            end
-            card:set_cost()
+                if card.ability.extra then
+                    if type(card.ability.extra) == "number" then
+                        card.ability.extra = math.floor(card.ability.extra * lfactor)
+                    elseif type(card.ability.extra) == "table" then
+                        scale_value(card.ability.extra)
+                    end
+                end
+                card:set_cost()
         end
     end,
 
     loc_vars = function(self, info_queue, card)
         local lfactor = card.ability.washed_factor or 1
         return { vars = { self.config.down_limit, self.config.up_limit, lfactor } }
-    end
+    end,
 }
 
 --------------------------------------------------------------------------------------------
@@ -80,12 +88,8 @@ SMODS.Sticker {
 
     --Label for the badge, else doesn't work
     loc_txt = {
-        ["en-us"] = {
-                label = "Faulty"
-        },
-        ["fr"] = {
-                label = "Défectueux"
-        }
+        ["en-us"] = {label = "Faulty"},
+        ["fr"] = {label = "Défectueux"}
     },
 
     badge_colour = HEX("a07c46"),
@@ -100,9 +104,6 @@ SMODS.Sticker {
     config = {
         num = 1,
         odds = 5,
-        extra = {
-            art = "standard"
-        }
     },
 
     loc_vars = function(self, info_queue, card)

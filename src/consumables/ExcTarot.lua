@@ -31,7 +31,7 @@ SMODS.Consumable {
             num = 3,
             odds = 6,
             dollars = 50,
-            bfactor = 2
+            bfactor = 3
         }
     },
 
