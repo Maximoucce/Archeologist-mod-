@@ -13,7 +13,7 @@ This mod is a test.<br>
 
 # **A New Enhancement :**
 ![icon](assets/1x/sandfinal.png)
-<br>**Sandy Card** : Multiplies the blind X0.95 when the card is scored.
+<br> **Sandy Card** : Multiplies the blind X0.95 when the card is scored.
 
 # **2 New Tarots :**
 <img width="260" height="174" alt="2379780_2086" src="https://github.com/user-attachments/assets/4222fd68-0edd-40ae-8ae0-e734ae5a0f28" /><br>
@@ -58,7 +58,7 @@ This mod is a test.<br>
 | Legendary | 1 spectral card |
 
 # **A New Tag :**
-![icon](assets/2x/tagline.png) **Review Tag** : Gives 1 retrigger to ALL scored cards and in held in hand abilities for the next round (like : dusk + mime).<br>
+![icon](assets/2x/tagline2x.png) **Review Tag** : Gives 1 retrigger to ALL scored cards and in held in hand abilities for the next round (like : dusk + mime).<br>
 
 # **2 New Vouchers :**
 <img width="226" height="174" alt="2379780_2085" src="https://github.com/user-attachments/assets/bb312ee6-4f8c-4935-b85d-f0c04780f367" /><br>
@@ -71,10 +71,8 @@ This mod is a test.<br>
 
 # **How to Install ?**
 <img width="429" height="395" alt="guide" src="https://github.com/user-attachments/assets/d4644c14-6331-42d3-a6b2-628ebf19fbb6" /><br>
-**Go to *"Code"* then click on *"download ZIP"*.**<br>
-*Or wait for me to finally make a release.*<br>
-
-**Once downloaded, extract your files in your `%AppData%/Balatro/Mods` folder (create one if needed) and it's done.**
+**Go to *"<>Code🔽"* then click on *"Download ZIP"*.**<br>
+**Once downloaded, extract the files in your `%AppData%/Balatro/Mods` folder (create one if needed) and it's done.**
 
 # **Credits :**
 
