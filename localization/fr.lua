@@ -145,6 +145,13 @@ return {
                 text = {
                     "Attention, les flammes le brisent"
                 }
+            },
+            bl_maxarch_ancientboss = {
+                name = "Tablette Ancienne",
+                text = {
+                    "Des symboles oubliés",
+                    "envahissent votre IU"
+                }
             }
         },
         Tag = {

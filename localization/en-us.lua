@@ -163,6 +163,13 @@ return {
                 text = {
                     "Careful, flames break it"
                 }
+            },
+            bl_maxarch_ancientboss = {
+                name = "Ancient Tablet",
+                text = {
+                    "Forgotten symbols",
+                    "take over your UI"
+                }
             }
         },
         Tag = {

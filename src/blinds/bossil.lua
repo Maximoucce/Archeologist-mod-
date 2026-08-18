@@ -28,7 +28,7 @@ SMODS.Blind {
     discovered = false,
 
     set_blind = function(self, blind, reset)
-        self.pos.y = 0
+        self.pos.y = 0 --for sprite reset
     end,
 
     calc_dollar_bonus = function(self,card)

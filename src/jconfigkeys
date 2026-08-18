@@ -1,13 +1,14 @@
 mult
 s_mult
-t_mult
-t_chips
+t_mult /
+t_chips /
 size
 repetitions
 bankrupt_at
 chips
 Xmult
 every
+loyalty_remaining *
 odds
 max
 min
