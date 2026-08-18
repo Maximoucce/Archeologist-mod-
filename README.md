@@ -85,7 +85,6 @@ This mod is a test.<br>
  * Full **French localization** is available
 
 **WIP :**
-* **SuperBoss Blind**
 * **Legendary Joker**
 * **Edition:** Need to figure out shaders...
 * **[Cardsleeves](https://github.com/larswijn/CardSleeves) compat** almost there, but I am stuck
