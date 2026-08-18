@@ -34,9 +34,12 @@ This mod is a test.<br>
 | Middle Positions | +2$ |
 | Last Position | X1.3 Mult |
 
-# **A New Blind :**
+# **2 New Blinds :**
 <img width="64" height="64" alt="fossilEN" src="https://github.com/user-attachments/assets/756ebe70-f99e-4544-97e7-dda2a3ea0e0e" /><br>
-**The Fossil** : Beating it with flame effects will break it ( -15$ at the end of the round).
+**The Fossil** : Beating it with flame effects will break it ( -15$ at the end of the round). *(X2 base)* <br>
+<img width="68" height="68" alt="ancienttboss-1 png (2)" src="https://github.com/user-attachments/assets/8de5358f-a918-475c-9f5f-5f7004829b28" /><br>
+**Ancient Tablet** : Changes the font of *almost* all text to make it easier to read. *(X4 base)*
+
 
 # **2 New Stakes :** *(past Gold)*
 ![icon](assets/2x/staketest3.png)
